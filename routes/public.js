@@ -1,0 +1,108 @@
+const express = require('express');
+const { all, get, run } = require('../lib/db');
+
+const router = express.Router();
+
+router.get('/', (req, res) => {
+  const featured = all(
+    `SELECT p.*, c.name AS collection_name, c.slug AS collection_slug
+     FROM products p LEFT JOIN collections c ON c.id = p.collection_id
+     WHERE p.is_published = 1 AND p.is_featured = 1
+     ORDER BY p.sort_order LIMIT 6`
+  );
+  const collections = all(
+    'SELECT * FROM collections ORDER BY sort_order, id LIMIT 4'
+  );
+  res.render('home.njk', { title: res.locals.site.name, featured, collections });
+});
+
+router.get('/collections', (req, res) => {
+  const collections = all('SELECT * FROM collections ORDER BY sort_order, id');
+  const productsByCol = {};
+  for (const c of collections) {
+    productsByCol[c.id] = all(
+      `SELECT * FROM products WHERE collection_id = ? AND is_published = 1 ORDER BY sort_order LIMIT 4`,
+      c.id
+    );
+  }
+  res.render('collections.njk', {
+    title: 'The Collections',
+    collections,
+    productsByCol,
+  });
+});
+
+router.get('/collections/:slug', (req, res, next) => {
+  const collection = get(
+    'SELECT * FROM collections WHERE slug = ?',
+    req.params.slug
+  );
+  if (!collection) return next();
+  const products = all(
+    `SELECT * FROM products WHERE collection_id = ? AND is_published = 1 ORDER BY sort_order`,
+    collection.id
+  );
+  res.render('collection-detail.njk', {
+    title: collection.name,
+    collection,
+    products,
+  });
+});
+
+router.get('/products/:slug', (req, res, next) => {
+  const product = get(
+    `SELECT p.*, c.name AS collection_name, c.slug AS collection_slug
+     FROM products p LEFT JOIN collections c ON c.id = p.collection_id
+     WHERE p.slug = ? AND p.is_published = 1`,
+    req.params.slug
+  );
+  if (!product) return next();
+  const related = all(
+    `SELECT * FROM products WHERE collection_id = ? AND id != ? AND is_published = 1 ORDER BY sort_order LIMIT 3`,
+    product.collection_id,
+    product.id
+  );
+  res.render('product.njk', { title: product.name, product, related });
+});
+
+router.get('/portfolio', (req, res) => {
+  const designs = [];
+  for (let i = 1; i <= 15; i++) {
+    const n = String(i).padStart(2, '0');
+    designs.push({ index: i, image: `/images/products/design-${n}.jpg` });
+  }
+  res.render('portfolio.njk', {
+    title: 'Portfolio',
+    designs,
+    pdf_url: '/portfolio.pdf',
+  });
+});
+
+router.get('/imagine', (req, res) => {
+  res.render('imagine.njk', { title: 'Xevia Imagine' });
+});
+
+router.get('/about', (req, res) => {
+  res.render('about.njk', { title: 'About' });
+});
+
+router.get('/contact', (req, res) => {
+  res.render('contact.njk', { title: 'Contact' });
+});
+
+router.post('/subscribe', (req, res) => {
+  const email = String(req.body.email || '').trim().toLowerCase();
+  if (email && /^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+    try {
+      run('INSERT OR IGNORE INTO subscribers (email) VALUES (?)', email);
+      req.session.flash = { type: 'success', message: 'Welcome to the private circle.' };
+    } catch (e) {
+      req.session.flash = { type: 'error', message: 'Something went wrong.' };
+    }
+  } else {
+    req.session.flash = { type: 'error', message: 'Please enter a valid email.' };
+  }
+  res.redirect(req.get('referer') || '/');
+});
+
+module.exports = router;

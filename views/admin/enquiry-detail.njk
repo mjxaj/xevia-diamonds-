@@ -1,0 +1,50 @@
+{% extends 'admin/_layout.njk' %}
+{% block content %}
+<a href="/admin/enquiries" class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] hover:text-[#C5A384]">← Back to enquiries</a>
+<div class="flex justify-between items-start mt-4 mb-10">
+  <div>
+    <p class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#C5A384]">Reference {{ enquiry.reference }}</p>
+    <h1 class="text-4xl serif italic mt-2">{{ enquiry.name }}</h1>
+    <p class="text-sm text-[#444]"><a href="mailto:{{ enquiry.email }}" class="hover:text-[#C5A384]">{{ enquiry.email }}</a>{% if enquiry.phone %} · <a href="tel:{{ enquiry.phone }}" class="hover:text-[#C5A384]">{{ enquiry.phone }}</a>{% endif %}</p>
+  </div>
+  <form method="POST" action="/admin/enquiries/{{ enquiry.id }}/delete" onsubmit="return confirm('Delete this enquiry permanently?')">
+    <button class="text-[10px] tracking-[0.3em] uppercase font-bold text-red-600">Delete</button>
+  </form>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <div class="lg:col-span-2 bg-white border border-[#E0D9CF] p-8">
+    <h2 class="text-xl serif italic mb-6">Enquiry details</h2>
+    <dl class="divide-y divide-[#E0D9CF]">
+      <div class="grid grid-cols-3 py-3"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Product</dt><dd class="col-span-2 text-sm">{{ enquiry.product_name | default('— general —') }}</dd></div>
+      <div class="grid grid-cols-3 py-3"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Type</dt><dd class="col-span-2 text-sm">{{ enquiry.enquiry_type }}</dd></div>
+      <div class="grid grid-cols-3 py-3"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Budget</dt><dd class="col-span-2 text-sm">{{ enquiry.budget | default('—') }}</dd></div>
+      <div class="grid grid-cols-3 py-3"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Received</dt><dd class="col-span-2 text-sm">{{ enquiry.created_at | date }}</dd></div>
+      <div class="grid grid-cols-3 py-3"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Customer emailed</dt><dd class="col-span-2 text-sm">{% if enquiry.customer_emailed %}<span class="text-emerald-600">✓ Yes</span>{% else %}<span class="text-[#444]">No (SMTP off)</span>{% endif %}</dd></div>
+      <div class="grid grid-cols-3 py-3"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Admin notified</dt><dd class="col-span-2 text-sm">{% if enquiry.admin_emailed %}<span class="text-emerald-600">✓ Yes</span>{% else %}<span class="text-[#444]">No (SMTP off)</span>{% endif %}</dd></div>
+    </dl>
+    <h3 class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mt-8 mb-3">Customer message</h3>
+    <div class="bg-[#faf4ed] p-6 whitespace-pre-wrap text-sm leading-relaxed">{{ enquiry.message | default('(no message)') }}</div>
+  </div>
+
+  <div class="bg-white border border-[#E0D9CF] p-8 h-fit">
+    <h2 class="text-xl serif italic mb-6">Status & notes</h2>
+    <form method="POST" action="/admin/enquiries/{{ enquiry.id }}" class="space-y-4">
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Status</label>
+        <select name="status" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm">
+          {% for opt in ['new','contacted','quoted','closed','archived'] %}
+          <option value="{{ opt }}" {% if enquiry.status == opt %}selected{% endif %}>{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Internal notes</label>
+        <textarea name="admin_notes" rows="8" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm">{{ enquiry.admin_notes }}</textarea>
+      </div>
+      <button class="w-full bg-[#101010] text-white py-3 text-xs tracking-[0.3em] uppercase font-bold">Save</button>
+    </form>
+    <a href="mailto:{{ enquiry.email }}?subject=Re: Your enquiry {{ enquiry.reference }}" class="block text-center mt-4 px-4 py-3 border border-[#C5A384] text-[#C5A384] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#C5A384] hover:text-white transition-colors">Reply by email</a>
+  </div>
+</div>
+{% endblock %}

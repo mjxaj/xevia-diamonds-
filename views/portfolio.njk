@@ -1,0 +1,30 @@
+{% extends '_base.njk' %}
+{% block content %}
+<section class="py-16 px-6 max-w-7xl mx-auto text-center">
+  <p class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">The Archive</p>
+  <h1 class="text-5xl md:text-7xl font-headline italic mt-4">Portfolio</h1>
+  <p class="text-[#444] font-light text-lg leading-relaxed mt-6 max-w-2xl mx-auto">
+    A curated archive of {{ designs.length }} signature pieces — drafted, set and finished by our atelier. Browse below, or download the printed dossier.
+  </p>
+  <a href="{{ pdf_url }}" download class="inline-flex items-center gap-3 mt-8 px-8 py-4 border border-[#101010] text-[#101010] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#101010] hover:text-white transition-colors">
+    <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+    Download Dossier
+  </a>
+</section>
+
+<section class="px-6 pb-32 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for d in designs %}
+    <a href="{{ d.image }}" target="_blank" class="group block bg-white border border-[#E0D9CF] overflow-hidden">
+      <img src="{{ d.image }}" alt="Design {{ d.index }}" class="w-full h-auto group-hover:scale-[1.02] transition-transform duration-700"/>
+      <div class="px-6 py-4 flex items-center justify-between border-t border-[#E0D9CF]">
+        <span class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Plate {{ d.index }}</span>
+        <button onclick="event.preventDefault(); window.openEnquire && window.openEnquire('Design Plate {{ d.index }}')"
+          data-enquire data-title="Enquire about Plate {{ d.index }}"
+          class="text-[10px] tracking-[0.3em] uppercase font-bold text-primary">Enquire →</button>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

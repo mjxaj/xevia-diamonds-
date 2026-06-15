@@ -1,0 +1,17 @@
+{% extends '_base.njk' %}
+{% block content %}
+<section class="py-20 px-6 max-w-3xl mx-auto text-center">
+  <p class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">The Atelier</p>
+  <h1 class="text-5xl md:text-7xl font-headline italic mt-4">{{ settings.about_heading | default('A Heritage of Craft') }}</h1>
+</section>
+<section class="px-6 pb-24 max-w-3xl mx-auto">
+  <p class="text-[#444] font-light text-lg leading-relaxed">{{ settings.about_body }}</p>
+</section>
+<section class="py-24 bg-surface-container-low border-y border-[#E0D9CF] px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div><p class="text-primary text-[10px] tracking-[0.3em] uppercase font-bold mb-2">Founded</p><p class="text-3xl font-headline italic">{{ site.established }}</p></div>
+    <div><p class="text-primary text-[10px] tracking-[0.3em] uppercase font-bold mb-2">Atelier</p><p class="text-3xl font-headline italic">{{ site.contact_address }}</p></div>
+    <div><p class="text-primary text-[10px] tracking-[0.3em] uppercase font-bold mb-2">Pieces Created</p><p class="text-3xl font-headline italic">5,000+</p></div>
+  </div>
+</section>
+{% endblock %}

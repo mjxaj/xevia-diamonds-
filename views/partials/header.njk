@@ -1,0 +1,31 @@
+<header class="fixed top-0 w-full z-40 flex justify-between items-center px-6 h-20 glass-panel border-b border-[#E0D9CF]">
+  <div class="flex items-center gap-6">
+    <a href="/" class="text-2xl font-serif tracking-[0.3em] text-[#101010] uppercase">{{ site.name }}</a>
+  </div>
+  <nav class="hidden md:flex items-center gap-10 text-xs tracking-[0.25em] uppercase font-semibold text-[#101010]">
+    <a href="/collections" class="hover:text-primary transition-colors {% if currentPath.startsWith('/collections') %}text-primary{% endif %}">Collections</a>
+    <a href="/portfolio" class="hover:text-primary transition-colors {% if currentPath == '/portfolio' %}text-primary{% endif %}">Portfolio</a>
+    <a href="/imagine" class="hover:text-primary transition-colors {% if currentPath == '/imagine' %}text-primary{% endif %}">Imagine</a>
+    <a href="/about" class="hover:text-primary transition-colors {% if currentPath == '/about' %}text-primary{% endif %}">Atelier</a>
+    <a href="/contact" class="hover:text-primary transition-colors {% if currentPath == '/contact' %}text-primary{% endif %}">Contact</a>
+  </nav>
+  <button data-enquire data-title="Enquire Now" class="hidden md:inline-flex px-6 py-3 gold-gradient text-white text-[10px] tracking-[0.3em] uppercase font-bold shadow-md hover:scale-105 transition-transform">
+    Enquire Now
+  </button>
+  <button class="md:hidden p-2 text-[#101010]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+    <span class="material-symbols-outlined">menu</span>
+  </button>
+</header>
+
+<div id="mobile-menu" class="hidden md:hidden fixed top-20 left-0 w-full z-40 glass-panel border-b border-[#E0D9CF] py-6">
+  <nav class="flex flex-col gap-4 px-8 text-sm tracking-[0.25em] uppercase font-semibold">
+    <a href="/collections">Collections</a>
+    <a href="/portfolio">Portfolio</a>
+    <a href="/imagine">Imagine</a>
+    <a href="/about">Atelier</a>
+    <a href="/contact">Contact</a>
+    <button data-enquire data-title="Enquire Now" class="mt-4 px-6 py-3 gold-gradient text-white text-[10px] tracking-[0.3em] uppercase font-bold">Enquire Now</button>
+  </nav>
+</div>
+
+<div class="h-20"></div>

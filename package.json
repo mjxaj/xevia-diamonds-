@@ -1,0 +1,24 @@
+{
+  "name": "xevia-diamonds",
+  "version": "1.0.0",
+  "description": "Xevia Diamonds — luxury fine jewellery atelier",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "NODE_NO_WARNINGS=1 node server.js",
+    "dev": "NODE_NO_WARNINGS=1 node --watch server.js",
+    "seed": "NODE_NO_WARNINGS=1 node lib/seed.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-session": "^1.18.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.15",
+    "nunjucks": "^3.2.4"
+  }
+}

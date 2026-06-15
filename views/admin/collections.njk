@@ -1,0 +1,67 @@
+{% extends 'admin/_layout.njk' %}
+{% block content %}
+<h1 class="text-4xl serif italic mb-2">Collections</h1>
+<p class="text-sm text-[#444] mb-10">Top-level houses of the atelier.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+  {% for c in collections %}
+  <form method="POST" action="/admin/collections/{{ c.id }}" enctype="multipart/form-data" class="bg-white border border-[#E0D9CF] p-6">
+    <div class="flex gap-4">
+      <div class="w-32 h-32 bg-[#faf4ed] border border-[#E0D9CF] flex-shrink-0 overflow-hidden">
+        {% if c.image_url %}<img src="{{ c.image_url }}" class="w-full h-full object-cover"/>{% endif %}
+      </div>
+      <div class="flex-1 space-y-3">
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Slug</label>
+          <input value="{{ c.slug }}" readonly class="w-full bg-[#faf4ed] border border-[#E0D9CF] px-3 py-2 text-sm"/>
+        </div>
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Name</label>
+          <input name="name" value="{{ c.name }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 space-y-3">
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Tagline</label>
+        <input name="tagline" value="{{ c.tagline }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+      </div>
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Description</label>
+        <textarea name="description" rows="3" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm">{{ c.description }}</textarea>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Image URL</label>
+          <input name="image_url" value="{{ c.image_url }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+        </div>
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Or upload</label>
+          <input type="file" name="image" accept="image/*" class="w-full text-xs py-2"/>
+        </div>
+      </div>
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Sort order</label>
+        <input name="sort_order" type="number" value="{{ c.sort_order }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+      </div>
+    </div>
+    <div class="flex gap-3 mt-4">
+      <button class="flex-1 bg-[#101010] text-white py-2 text-xs tracking-[0.3em] uppercase font-bold">Save</button>
+    </div>
+  </form>
+  {% endfor %}
+</div>
+
+<form method="POST" action="/admin/collections" enctype="multipart/form-data" class="bg-white border border-[#E0D9CF] p-6">
+  <h3 class="text-xl serif italic mb-4">+ New Collection</h3>
+  <div class="grid grid-cols-2 gap-3 mb-3">
+    <input name="slug" required placeholder="slug-like-this" class="border border-[#E0D9CF] px-3 py-2 text-sm"/>
+    <input name="name" required placeholder="Name" class="border border-[#E0D9CF] px-3 py-2 text-sm"/>
+    <input name="tagline" placeholder="Tagline" class="border border-[#E0D9CF] px-3 py-2 text-sm"/>
+    <input name="sort_order" type="number" value="99" placeholder="Sort" class="border border-[#E0D9CF] px-3 py-2 text-sm"/>
+  </div>
+  <textarea name="description" rows="2" placeholder="Description" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm mb-3"></textarea>
+  <input type="file" name="image" accept="image/*" class="w-full text-xs mb-3"/>
+  <button class="bg-[#C5A384] text-white px-6 py-2 text-xs tracking-[0.3em] uppercase font-bold">Create</button>
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends '_base.njk' %}
+{% block content %}
+<section class="py-20 px-6 max-w-5xl mx-auto">
+  <p class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">Reach the Atelier</p>
+  <h1 class="text-5xl md:text-7xl font-headline italic mt-4 mb-16">Contact</h1>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div>
+      <h3 class="text-xs tracking-[0.3em] uppercase font-bold text-primary mb-3">Email</h3>
+      {% if site.contact_email %}<a href="mailto:{{ site.contact_email }}" class="text-lg font-headline italic hover:underline">{{ site.contact_email }}</a>{% endif %}
+    </div>
+    <div>
+      <h3 class="text-xs tracking-[0.3em] uppercase font-bold text-primary mb-3">Telephone</h3>
+      {% if site.contact_phone %}<a href="tel:{{ site.contact_phone }}" class="text-lg font-headline italic hover:underline">{{ site.contact_phone }}</a>{% endif %}
+    </div>
+    <div>
+      <h3 class="text-xs tracking-[0.3em] uppercase font-bold text-primary mb-3">Atelier</h3>
+      <p class="text-lg font-headline italic">{{ site.contact_address }}</p>
+    </div>
+  </div>
+  <div class="mt-20 p-12 bg-surface-container-low border border-[#E0D9CF] text-center">
+    <p class="text-primary text-[10px] tracking-[0.3em] uppercase font-bold mb-3">For private viewings, commissions or press</p>
+    <h2 class="text-3xl md:text-4xl font-headline italic mb-6">Begin a Conversation</h2>
+    <button data-enquire data-title="Get in Touch" class="px-12 py-4 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-md">Enquire Now</button>
+  </div>
+</section>
+{% endblock %}

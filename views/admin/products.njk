@@ -1,0 +1,33 @@
+{% extends 'admin/_layout.njk' %}
+{% block content %}
+<div class="flex justify-between items-end mb-10">
+  <div>
+    <h1 class="text-4xl serif italic">Products</h1>
+    <p class="text-sm text-[#444]">{{ products.length }} pieces in the atelier.</p>
+  </div>
+  <a href="/admin/products/new" class="bg-[#C5A384] text-white px-6 py-3 text-xs tracking-[0.3em] uppercase font-bold">+ New Product</a>
+</div>
+
+<div class="bg-white border border-[#E0D9CF]">
+  <table class="w-full text-sm">
+    <thead class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] bg-[#faf4ed]">
+      <tr><th class="text-left px-6 py-3">Image</th><th class="text-left px-6 py-3">Name</th><th class="text-left px-6 py-3">Collection</th><th class="text-left px-6 py-3">Featured</th><th class="text-left px-6 py-3">Published</th><th class="text-left px-6 py-3"></th></tr>
+    </thead>
+    <tbody>
+      {% for p in products %}
+      <tr class="border-t border-[#E0D9CF] hover:bg-[#faf4ed]">
+        <td class="px-6 py-3">{% if p.primary_image %}<img src="{{ p.primary_image }}" class="w-12 h-12 object-cover border border-[#E0D9CF]"/>{% endif %}</td>
+        <td class="px-6 py-3 font-bold"><a href="/admin/products/{{ p.id }}" class="hover:text-[#C5A384]">{{ p.name }}</a><div class="text-xs text-[#444] font-normal">/{{ p.slug }}</div></td>
+        <td class="px-6 py-3 text-[#444]">{{ p.collection_name | default('—') }}</td>
+        <td class="px-6 py-3">{% if p.is_featured %}<span class="text-[#C5A384] font-bold">★</span>{% endif %}</td>
+        <td class="px-6 py-3">{% if p.is_published %}<span class="text-emerald-600">✓</span>{% else %}<span class="text-[#444]">draft</span>{% endif %}</td>
+        <td class="px-6 py-3 text-right">
+          <a href="/products/{{ p.slug }}" target="_blank" class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] hover:text-[#C5A384] mr-3">View</a>
+          <a href="/admin/products/{{ p.id }}" class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#C5A384]">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'admin/_layout.njk' %}
+{% block content %}
+<h1 class="text-4xl serif italic mb-2">Site Settings</h1>
+<p class="text-sm text-[#444] mb-10">Every text on the public site is editable here — nothing is hard-coded.</p>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <form method="POST" action="/admin/settings" class="lg:col-span-2 bg-white border border-[#E0D9CF] p-8 space-y-5">
+    {% for r in rows %}
+    <div>
+      <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">{{ r.key }}</label>
+      {% if r.value.length > 80 %}
+      <textarea name="{{ r.key }}" rows="3" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm">{{ r.value }}</textarea>
+      {% else %}
+      <input name="{{ r.key }}" value="{{ r.value }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <button class="w-full bg-[#C5A384] text-white py-3 text-xs tracking-[0.3em] uppercase font-bold">Save Settings</button>
+  </form>
+
+  <div class="space-y-6">
+    <form method="POST" action="/admin/account/password" class="bg-white border border-[#E0D9CF] p-6 space-y-4">
+      <h3 class="text-xl serif italic">Change Password</h3>
+      <input name="current_password" type="password" required placeholder="Current password" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+      <input name="new_password" type="password" required minlength="8" placeholder="New password (8+ chars)" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+      <button class="w-full bg-[#101010] text-white py-2 text-xs tracking-[0.3em] uppercase font-bold">Update</button>
+    </form>
+    <div class="bg-[#faf4ed] border border-[#E0D9CF] p-6 text-xs text-[#444] leading-relaxed">
+      <h4 class="font-bold text-[#101010] mb-2 text-[10px] tracking-[0.3em] uppercase">SMTP / Email</h4>
+      <p>Email keys: <code>smtp_host</code>, <code>smtp_port</code>, <code>smtp_secure</code>, <code>smtp_user</code>, <code>smtp_pass</code>, <code>mail_from</code>, <code>mail_from_name</code>. Notify-to falls back to <code>contact_email</code>.</p>
+      <p class="mt-3">Until SMTP is configured, enquiries still save to the DB. Add the settings above or use <code>.env</code>.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

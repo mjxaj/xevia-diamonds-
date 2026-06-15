@@ -1,0 +1,45 @@
+<footer class="bg-[#FFF8F0] border-t border-[#E0D9CF] mt-32">
+  <section class="py-24 border-b border-[#E0D9CF]">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-headline mb-6">{{ settings.newsletter_heading | default('Join the Private Circle') }}</h2>
+      <p class="text-[#444] mb-10">{{ settings.newsletter_body | default('Receive exclusive invitations to private viewings and early access.') }}</p>
+      <form action="/subscribe" method="POST" class="flex flex-col md:flex-row gap-4">
+        <input name="email" required type="email" placeholder="YOUR EMAIL ADDRESS" class="flex-grow bg-transparent border-b border-[#E0D9CF] text-[#101010] placeholder:text-[#444]/50 focus:border-primary focus:ring-0 px-4 py-4 text-xs tracking-widest uppercase transition-colors"/>
+        <button class="bg-primary text-white px-10 py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#a88563] transition-colors shadow-md">Subscribe</button>
+      </form>
+    </div>
+  </section>
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div>
+      <div class="text-xl font-serif tracking-[0.3em] uppercase mb-4">{{ site.name }}</div>
+      <p class="text-sm text-[#444] font-light leading-relaxed">{{ site.tagline }}<br/>Est. {{ site.established }}</p>
+    </div>
+    <div>
+      <h4 class="text-[10px] tracking-[0.3em] uppercase font-bold mb-4 text-primary">Atelier</h4>
+      <ul class="space-y-2 text-sm text-[#444]">
+        <li><a href="/collections" class="hover:text-primary">Collections</a></li>
+        <li><a href="/portfolio" class="hover:text-primary">Portfolio</a></li>
+        <li><a href="/imagine" class="hover:text-primary">Imagine</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-[10px] tracking-[0.3em] uppercase font-bold mb-4 text-primary">House</h4>
+      <ul class="space-y-2 text-sm text-[#444]">
+        <li><a href="/about" class="hover:text-primary">Our Story</a></li>
+        <li><a href="/contact" class="hover:text-primary">Contact</a></li>
+        <li><button data-enquire data-title="Private Concierge" class="hover:text-primary">Private Concierge</button></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-[10px] tracking-[0.3em] uppercase font-bold mb-4 text-primary">Contact</h4>
+      <ul class="space-y-2 text-sm text-[#444]">
+        {% if site.contact_email %}<li><a href="mailto:{{ site.contact_email }}" class="hover:text-primary">{{ site.contact_email }}</a></li>{% endif %}
+        {% if site.contact_phone %}<li><a href="tel:{{ site.contact_phone }}" class="hover:text-primary">{{ site.contact_phone }}</a></li>{% endif %}
+        {% if site.contact_address %}<li>{{ site.contact_address }}</li>{% endif %}
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-[#E0D9CF] py-6 text-center text-[10px] tracking-[0.3em] uppercase text-[#444]/60">
+    &copy; {{ site.name }} — {{ site.established }} · All rights reserved
+  </div>
+</footer>

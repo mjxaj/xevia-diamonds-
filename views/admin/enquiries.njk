@@ -1,0 +1,50 @@
+{% extends 'admin/_layout.njk' %}
+{% block content %}
+<div class="flex justify-between items-end mb-10">
+  <div>
+    <h1 class="text-4xl serif italic">Enquiries</h1>
+    <p class="text-sm text-[#444]">All enquiries received from the site.</p>
+  </div>
+</div>
+
+<form method="GET" class="flex flex-wrap gap-3 mb-6">
+  <select name="status" class="border border-[#E0D9CF] px-4 py-2 text-sm bg-white" onchange="this.form.submit()">
+    {% for opt in [['all','All'],['new','New'],['contacted','Contacted'],['quoted','Quoted'],['closed','Closed'],['archived','Archived']] %}
+    <option value="{{ opt[0] }}" {% if status == opt[0] %}selected{% endif %}>{{ opt[1] }}</option>
+    {% endfor %}
+  </select>
+  <input name="q" value="{{ q }}" placeholder="Search name, email, ref, product…" class="flex-1 border border-[#E0D9CF] px-4 py-2 text-sm bg-white"/>
+  <button class="bg-[#101010] text-white px-6 py-2 text-xs tracking-[0.3em] uppercase font-bold">Filter</button>
+</form>
+
+<div class="bg-white border border-[#E0D9CF]">
+  {% if enquiries.length %}
+  <table class="w-full text-sm">
+    <thead class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] bg-[#faf4ed]">
+      <tr>
+        <th class="text-left px-6 py-3">Ref</th>
+        <th class="text-left px-6 py-3">Customer</th>
+        <th class="text-left px-6 py-3">Product</th>
+        <th class="text-left px-6 py-3">Budget</th>
+        <th class="text-left px-6 py-3">Status</th>
+        <th class="text-left px-6 py-3">Received</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in enquiries %}
+      <tr class="border-t border-[#E0D9CF] hover:bg-[#faf4ed] cursor-pointer" onclick="window.location='/admin/enquiries/{{ e.id }}'">
+        <td class="px-6 py-4 font-bold text-[#C5A384]">{{ e.reference }}</td>
+        <td class="px-6 py-4">{{ e.name }}<div class="text-xs text-[#444]">{{ e.email }}{% if e.phone %} · {{ e.phone }}{% endif %}</div></td>
+        <td class="px-6 py-4 text-[#444]">{{ e.product_name | default('—') }}</td>
+        <td class="px-6 py-4 text-xs">{{ e.budget | default('—') }}</td>
+        <td class="px-6 py-4"><span class="px-2 py-1 text-[10px] uppercase tracking-widest font-bold {% if e.status == 'new' %}bg-amber-100 text-amber-800{% elif e.status == 'contacted' %}bg-blue-100 text-blue-800{% elif e.status == 'closed' %}bg-emerald-100 text-emerald-800{% else %}bg-gray-100 text-gray-700{% endif %}">{{ e.status }}</span></td>
+        <td class="px-6 py-4 text-xs text-[#444]">{{ e.created_at | date }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="p-12 text-center text-[#444] italic">No enquiries match.</div>
+  {% endif %}
+</div>
+{% endblock %}

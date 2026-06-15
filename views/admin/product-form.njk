@@ -1,0 +1,71 @@
+{% extends 'admin/_layout.njk' %}
+{% block content %}
+<a href="/admin/products" class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] hover:text-[#C5A384]">← Back to products</a>
+<h1 class="text-4xl serif italic mt-4 mb-10">{% if product %}Edit Product{% else %}New Product{% endif %}</h1>
+
+<form method="POST" action="{% if product %}/admin/products/{{ product.id }}{% else %}/admin/products{% endif %}" enctype="multipart/form-data" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <div class="lg:col-span-2 space-y-6 bg-white border border-[#E0D9CF] p-8">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Name *</label>
+        <input name="name" required value="{{ product.name | default('') }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+      </div>
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Slug (URL) *</label>
+        <input name="slug" required value="{{ product.slug | default('') }}" {% if product %}readonly{% endif %} class="w-full border border-[#E0D9CF] px-3 py-2 text-sm bg-[#faf4ed]"/>
+      </div>
+    </div>
+    <div>
+      <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Collection</label>
+      <select name="collection_id" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm">
+        <option value="">— None —</option>
+        {% for c in collections %}<option value="{{ c.id }}" {% if product and product.collection_id == c.id %}selected{% endif %}>{{ c.name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Short description (shown on grids)</label>
+      <input name="short_description" value="{{ product.short_description | default('') }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+    </div>
+    <div>
+      <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Long description</label>
+      <textarea name="description" rows="5" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm">{{ product.description | default('') }}</textarea>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div><label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Metal</label><input name="metal" value="{{ product.metal | default('') }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/></div>
+      <div><label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Stones</label><input name="stones" value="{{ product.stones | default('') }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/></div>
+      <div><label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Carat Weight</label><input name="carat_weight" value="{{ product.carat_weight | default('') }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/></div>
+      <div><label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Dimensions</label><input name="dimensions" value="{{ product.dimensions | default('') }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/></div>
+      <div class="col-span-2"><label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Price / Investment text</label><input name="price_range" value="{{ product.price_range | default('') }}" placeholder="e.g. On enquiry" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/></div>
+    </div>
+  </div>
+
+  <div class="space-y-6">
+    <div class="bg-white border border-[#E0D9CF] p-6">
+      <h3 class="text-xs tracking-[0.3em] uppercase font-bold mb-4">Image</h3>
+      {% if product.primary_image %}<img src="{{ product.primary_image }}" class="w-full mb-4 border border-[#E0D9CF]"/>{% endif %}
+      <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Upload new image</label>
+      <input type="file" name="image" accept="image/*" class="w-full text-xs"/>
+      <p class="text-[10px] text-[#444] mt-2">— or —</p>
+      <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mt-2 mb-2">Image URL</label>
+      <input name="primary_image" value="{{ product.primary_image | default('') }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+    </div>
+
+    <div class="bg-white border border-[#E0D9CF] p-6 space-y-4">
+      <label class="flex items-center gap-3 text-sm"><input type="checkbox" name="is_published" value="1" {% if (not product) or product.is_published %}checked{% endif %}/> Published</label>
+      <label class="flex items-center gap-3 text-sm"><input type="checkbox" name="is_featured" value="1" {% if product and product.is_featured %}checked{% endif %}/> Featured on home</label>
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-2">Sort order</label>
+        <input name="sort_order" type="number" value="{{ product.sort_order | default(99) }}" class="w-full border border-[#E0D9CF] px-3 py-2 text-sm"/>
+      </div>
+    </div>
+
+    <button class="w-full bg-[#C5A384] text-white py-4 text-xs tracking-[0.3em] uppercase font-bold">{% if product %}Save Changes{% else %}Create Product{% endif %}</button>
+
+    {% if product %}
+    <form method="POST" action="/admin/products/{{ product.id }}/delete" onsubmit="return confirm('Delete this product permanently?')">
+      <button class="w-full border border-red-500 text-red-600 py-3 text-xs tracking-[0.3em] uppercase font-bold hover:bg-red-50">Delete product</button>
+    </form>
+    {% endif %}
+  </div>
+</form>
+{% endblock %}

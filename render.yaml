@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: xevia-diamonds
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22.5.1
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@xeviadiamonds.com
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SITE_NAME
+        value: XEVIA
+      - key: SITE_TAGLINE
+        value: Fine Jewellery Atelier
+      - key: SITE_ESTABLISHED
+        value: "1924"
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: CONTACT_PHONE
+        sync: false
+      - key: CONTACT_ADDRESS
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_SECURE
+        value: "false"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: NOTIFY_EMAIL
+        sync: false

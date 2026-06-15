@@ -1,0 +1,23 @@
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-40 flex justify-around items-center px-4 pb-6 pt-3 glass-panel border-t border-[#E0D9CF]">
+  <a href="/" class="flex flex-col items-center justify-center {% if currentPath == '/' %}text-primary{% else %}text-[#101010]/50{% endif %}">
+    <span class="material-symbols-outlined">auto_awesome</span>
+    <span class="text-[9px] font-bold uppercase tracking-widest mt-1">Atelier</span>
+  </a>
+  <a href="/collections" class="flex flex-col items-center justify-center {% if currentPath.startsWith('/collections') %}text-primary{% else %}text-[#101010]/50{% endif %}">
+    <span class="material-symbols-outlined">diamond</span>
+    <span class="text-[9px] font-bold uppercase tracking-widest mt-1">Gallery</span>
+  </a>
+  <a href="/portfolio" class="flex flex-col items-center justify-center {% if currentPath == '/portfolio' %}text-primary{% else %}text-[#101010]/50{% endif %}">
+    <span class="material-symbols-outlined">collections_bookmark</span>
+    <span class="text-[9px] font-bold uppercase tracking-widest mt-1">Portfolio</span>
+  </a>
+  <a href="/imagine" class="flex flex-col items-center justify-center {% if currentPath == '/imagine' %}text-primary{% else %}text-[#101010]/50{% endif %}">
+    <span class="material-symbols-outlined">auto_fix_high</span>
+    <span class="text-[9px] font-bold uppercase tracking-widest mt-1">Imagine</span>
+  </a>
+  <a href="/contact" class="flex flex-col items-center justify-center {% if currentPath == '/contact' %}text-primary{% else %}text-[#101010]/50{% endif %}">
+    <span class="material-symbols-outlined">person</span>
+    <span class="text-[9px] font-bold uppercase tracking-widest mt-1">Contact</span>
+  </a>
+</nav>
+<div class="h-20 md:hidden"></div>
