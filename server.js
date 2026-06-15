@@ -34,6 +34,10 @@ env.addFilter('date', (d) => {
   const dt = new Date(d);
   return Number.isNaN(dt.getTime()) ? d : dt.toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
 });
+env.addFilter('parseJson', (s) => {
+  if (!s) return [];
+  try { return JSON.parse(s); } catch { return []; }
+});
 
 app.set('view engine', 'njk');
 app.use(express.urlencoded({ extended: true }));

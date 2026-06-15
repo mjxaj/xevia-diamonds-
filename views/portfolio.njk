@@ -15,15 +15,20 @@
 <section class="px-6 pb-32 max-w-7xl mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {% for d in designs %}
-    <a href="{{ d.image }}" target="_blank" class="group block bg-white border border-[#E0D9CF] overflow-hidden">
-      <img src="{{ d.image }}" alt="Design {{ d.index }}" class="w-full h-auto group-hover:scale-[1.02] transition-transform duration-700"/>
+    <div class="group block bg-white border border-[#E0D9CF] overflow-hidden">
+      <div class="aspect-[4/5] overflow-hidden relative">
+        <img src="{{ d.image }}" alt="Design {{ d.index }}"
+          class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 group-hover:opacity-0"/>
+        <img src="{{ d.lifestyle }}" alt="Design {{ d.index }} — lifestyle"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-100"/>
+      </div>
       <div class="px-6 py-4 flex items-center justify-between border-t border-[#E0D9CF]">
         <span class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444]">Plate {{ d.index }}</span>
-        <button onclick="event.preventDefault(); window.openEnquire && window.openEnquire('Design Plate {{ d.index }}')"
+        <button type="button"
           data-enquire data-title="Enquire about Plate {{ d.index }}"
-          class="text-[10px] tracking-[0.3em] uppercase font-bold text-primary">Enquire →</button>
+          class="text-[10px] tracking-[0.3em] uppercase font-bold text-primary hover:opacity-70">Enquire →</button>
       </div>
-    </a>
+    </div>
     {% endfor %}
   </div>
 </section>

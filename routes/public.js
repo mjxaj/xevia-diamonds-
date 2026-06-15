@@ -68,8 +68,11 @@ router.get('/products/:slug', (req, res, next) => {
 router.get('/portfolio', (req, res) => {
   const designs = [];
   for (let i = 1; i <= 15; i++) {
-    const n = String(i).padStart(2, '0');
-    designs.push({ index: i, image: `/images/products/design-${n}.jpg` });
+    designs.push({
+      index: i,
+      image: `/images/products/design-${i}-1.jpg`,
+      lifestyle: `/images/products/design-${i}-3.jpg`,
+    });
   }
   res.render('portfolio.njk', {
     title: 'Portfolio',
