@@ -10,7 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-  body { font-family: 'Manrope', sans-serif; background-color: #FFF8F0; color: #101010; min-height: max(884px, 100dvh); }
+  body { font-family: 'Manrope', sans-serif; background-color: #FFF8F0; color: #101010; min-height: 100dvh; overflow-x: hidden; }
+  .safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+  img { max-width: 100%; height: auto; }
   h1, h2, h3, .serif { font-family: 'Noto Serif', serif; }
   .gold-gradient { background: linear-gradient(135deg, #C5A384 0%, #a88563 100%); }
   .glass-panel { background: rgba(255, 248, 240, 0.85); backdrop-filter: blur(20px); }

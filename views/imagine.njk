@@ -1,31 +1,31 @@
 {% extends '_base.njk' %}
 {% block content %}
-<section class="py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<section class="py-12 sm:py-16 md:py-24 px-5 sm:px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
   <div>
     <p class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">Co-Creation</p>
-    <h1 class="text-5xl md:text-7xl font-headline italic mt-4 mb-8">{{ settings.imagine_heading | default(site.name + ' Imagine') }}</h1>
-    <p class="text-[#444] font-light text-lg leading-relaxed mb-8 italic">"{{ settings.imagine_body }}"</p>
-    <ul class="space-y-6 mb-12">
-      <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">auto_awesome</span><span class="text-sm tracking-widest uppercase font-semibold">Select Rare Gemstones</span></li>
-      <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">edit_note</span><span class="text-sm tracking-widest uppercase font-semibold">Interactive 3D Sculpting</span></li>
-      <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">history_edu</span><span class="text-sm tracking-widest uppercase font-semibold">Artisan Consultation</span></li>
-      <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">verified</span><span class="text-sm tracking-widest uppercase font-semibold">Heirloom Certification</span></li>
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-headline italic mt-3 sm:mt-4 mb-6 md:mb-8">{{ settings.imagine_heading | default(site.name + ' Imagine') }}</h1>
+    <p class="text-[#444] font-light text-base sm:text-lg leading-relaxed mb-6 md:mb-8 italic">"{{ settings.imagine_body }}"</p>
+    <ul class="space-y-4 md:space-y-6 mb-8 md:mb-12">
+      <li class="flex items-center gap-3 sm:gap-4"><span class="material-symbols-outlined text-primary">auto_awesome</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Select Rare Gemstones</span></li>
+      <li class="flex items-center gap-3 sm:gap-4"><span class="material-symbols-outlined text-primary">edit_note</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Interactive 3D Sculpting</span></li>
+      <li class="flex items-center gap-3 sm:gap-4"><span class="material-symbols-outlined text-primary">history_edu</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Artisan Consultation</span></li>
+      <li class="flex items-center gap-3 sm:gap-4"><span class="material-symbols-outlined text-primary">verified</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Heirloom Certification</span></li>
     </ul>
-    <button data-enquire data-title="Begin a Custom Design" class="px-12 py-5 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-lg">Begin a Design Enquiry</button>
+    <button data-enquire data-title="Begin a Custom Design" class="w-full sm:w-auto px-10 sm:px-12 py-4 sm:py-5 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-lg">Begin a Design Enquiry</button>
   </div>
-  <div class="aspect-[4/5] bg-white border border-[#E0D9CF] overflow-hidden">
+  <div class="aspect-[4/5] bg-white border border-[#E0D9CF] overflow-hidden order-first lg:order-last">
     <img src="/images/products/design-9-3.jpg" alt="Imagine" class="w-full h-full object-cover"/>
   </div>
 </section>
 
-<section class="py-32 bg-surface-container-low border-y border-[#E0D9CF]">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl md:text-5xl font-headline italic mb-16 text-center">The Process</h2>
-    <ol class="grid grid-cols-1 md:grid-cols-4 gap-10">
-      <li><div class="text-primary font-headline text-5xl mb-4">I</div><h3 class="text-lg font-headline italic mb-2">Conversation</h3><p class="text-sm text-[#444]">A private consultation to understand the piece, the wearer, the occasion.</p></li>
-      <li><div class="text-primary font-headline text-5xl mb-4">II</div><h3 class="text-lg font-headline italic mb-2">Sketch & Spec</h3><p class="text-sm text-[#444]">Hand-drafted sketches and a technical specification sheet for your approval.</p></li>
-      <li><div class="text-primary font-headline text-5xl mb-4">III</div><h3 class="text-lg font-headline italic mb-2">Atelier</h3><p class="text-sm text-[#444]">Stones sourced, gold poured, setting hand-built by master craftsmen.</p></li>
-      <li><div class="text-primary font-headline text-5xl mb-4">IV</div><h3 class="text-lg font-headline italic mb-2">Delivery</h3><p class="text-sm text-[#444]">The finished piece — boxed, certified, and presented in our private salon.</p></li>
+<section class="py-16 md:py-32 bg-surface-container-low border-y border-[#E0D9CF]">
+  <div class="max-w-5xl mx-auto px-5 sm:px-6">
+    <h2 class="text-3xl md:text-5xl font-headline italic mb-10 md:mb-16 text-center">The Process</h2>
+    <ol class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+      <li><div class="text-primary font-headline text-4xl md:text-5xl mb-3 md:mb-4">I</div><h3 class="text-base md:text-lg font-headline italic mb-2">Conversation</h3><p class="text-xs sm:text-sm text-[#444] leading-relaxed">A private consultation to understand the piece, the wearer, the occasion.</p></li>
+      <li><div class="text-primary font-headline text-4xl md:text-5xl mb-3 md:mb-4">II</div><h3 class="text-base md:text-lg font-headline italic mb-2">Sketch & Spec</h3><p class="text-xs sm:text-sm text-[#444] leading-relaxed">Hand-drafted sketches and a technical specification sheet for your approval.</p></li>
+      <li><div class="text-primary font-headline text-4xl md:text-5xl mb-3 md:mb-4">III</div><h3 class="text-base md:text-lg font-headline italic mb-2">Atelier</h3><p class="text-xs sm:text-sm text-[#444] leading-relaxed">Stones sourced, gold poured, setting hand-built by master craftsmen.</p></li>
+      <li><div class="text-primary font-headline text-4xl md:text-5xl mb-3 md:mb-4">IV</div><h3 class="text-base md:text-lg font-headline italic mb-2">Delivery</h3><p class="text-xs sm:text-sm text-[#444] leading-relaxed">The finished piece — boxed, certified, and presented in our private salon.</p></li>
     </ol>
   </div>
 </section>

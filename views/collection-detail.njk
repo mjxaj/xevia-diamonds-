@@ -1,37 +1,37 @@
 {% extends '_base.njk' %}
 {% block content %}
-<section class="relative h-[50vh] overflow-hidden -mt-20">
+<section class="relative h-[40vh] sm:h-[50vh] overflow-hidden -mt-16 sm:-mt-20">
   {% if collection.image_url %}
     <img src="{{ collection.image_url }}" alt="{{ collection.name }}" class="absolute inset-0 w-full h-full object-cover brightness-75"/>
   {% endif %}
   <div class="absolute inset-0 bg-gradient-to-t from-[#FFF8F0] via-black/30 to-black/40"></div>
-  <div class="relative z-10 h-full flex flex-col items-center justify-end text-center px-6 pb-16 pt-32">
+  <div class="relative z-10 h-full flex flex-col items-center justify-end text-center px-5 sm:px-6 pb-10 sm:pb-16 pt-24 sm:pt-32">
     <p class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">{{ collection.tagline }}</p>
-    <h1 class="text-5xl md:text-7xl font-headline italic text-white mt-4 drop-shadow-lg">{{ collection.name }}</h1>
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-headline italic text-white mt-3 sm:mt-4 drop-shadow-lg">{{ collection.name }}</h1>
   </div>
 </section>
 
-<section class="py-16 px-6 max-w-3xl mx-auto text-center">
-  <p class="text-[#444] font-light text-lg leading-relaxed">{{ collection.description }}</p>
+<section class="py-10 sm:py-16 px-5 sm:px-6 max-w-3xl mx-auto text-center">
+  <p class="text-[#444] font-light text-base sm:text-lg leading-relaxed">{{ collection.description }}</p>
 </section>
 
-<section class="px-6 pb-32 max-w-7xl mx-auto">
+<section class="px-5 sm:px-6 pb-20 md:pb-32 max-w-7xl mx-auto">
   {% if products.length %}
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-x-4 sm:gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-16">
     {% for p in products %}
     <a href="/products/{{ p.slug }}" class="group block">
       <div class="aspect-[4/5] overflow-hidden bg-white border border-[#E0D9CF]">
         {% if p.primary_image %}<img src="{{ p.primary_image }}" alt="{{ p.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>{% endif %}
       </div>
-      <h3 class="text-xl font-headline italic mt-6">{{ p.name }}</h3>
-      {% if p.short_description %}<p class="text-[#444] text-sm mt-2 font-light line-clamp-2">{{ p.short_description }}</p>{% endif %}
-      <p class="text-primary text-[10px] tracking-[0.3em] uppercase mt-4 font-bold">{{ p.price_range | default('On enquiry') }}</p>
+      <h3 class="text-base sm:text-lg md:text-xl font-headline italic mt-4 md:mt-6 leading-tight">{{ p.name }}</h3>
+      {% if p.short_description %}<p class="hidden sm:block text-[#444] text-sm mt-2 font-light line-clamp-2">{{ p.short_description }}</p>{% endif %}
+      <p class="text-primary text-[9px] sm:text-[10px] tracking-[0.3em] uppercase mt-2 md:mt-4 font-bold">{{ p.price_range | default('On enquiry') }}</p>
     </a>
     {% endfor %}
   </div>
   {% else %}
-  <div class="text-center py-20 text-[#444]">
-    <p class="italic font-headline text-2xl mb-6">This collection is being curated.</p>
+  <div class="text-center py-16 md:py-20 text-[#444]">
+    <p class="italic font-headline text-xl sm:text-2xl mb-6">This collection is being curated.</p>
     <button data-enquire data-title="Enquire about {{ collection.name }}" class="px-8 py-3 gold-gradient text-white text-xs tracking-[0.3em] uppercase font-bold">Enquire Now</button>
   </div>
   {% endif %}

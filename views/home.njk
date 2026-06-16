@@ -2,45 +2,45 @@
 {% block content %}
 
 <!-- Hero -->
-<section class="relative h-[90vh] flex items-center justify-center overflow-hidden -mt-20">
+<section class="relative min-h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden -mt-16 sm:-mt-20">
   <div class="absolute inset-0 z-0">
     <img alt="{{ site.name }} hero" class="w-full h-full object-cover brightness-75" src="{{ settings.hero_image }}"/>
     <div class="absolute inset-0 bg-gradient-to-t from-[#FFF8F0] via-transparent to-black/20"></div>
   </div>
-  <div class="relative z-10 text-center px-6 pt-20">
-    <p class="text-primary font-label text-xs tracking-[0.4em] uppercase mb-6 font-bold">{{ settings.hero_eyebrow | default('Established ' + site.established) }}</p>
-    <h1 class="text-5xl md:text-8xl text-white font-headline mb-8 max-w-4xl leading-tight drop-shadow-lg">
+  <div class="relative z-10 text-center px-5 sm:px-6 pt-24 pb-12 w-full">
+    <p class="text-primary font-label text-[10px] sm:text-xs tracking-[0.35em] sm:tracking-[0.4em] uppercase mb-5 sm:mb-6 font-bold">{{ settings.hero_eyebrow | default('Established ' + site.established) }}</p>
+    <h1 class="text-[2.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl text-white font-headline mb-8 max-w-4xl mx-auto drop-shadow-lg">
       {{ settings.hero_title_line1 | default(site.name + ' Fine') }} <br/>
       <span class="italic">{{ settings.hero_title_line2 | default('Jewellery') }}</span>
     </h1>
-    <div class="flex flex-col md:flex-row gap-6 justify-center items-center mt-12">
-      <a href="/collections" class="px-10 py-4 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-lg hover:scale-105 transition-transform">Explore Atelier</a>
-      <a href="/portfolio" class="px-10 py-4 border border-white text-white font-bold text-xs tracking-[0.3em] uppercase hover:bg-white/10 transition-all backdrop-blur-sm">View Portfolio</a>
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-stretch sm:items-center mt-10 sm:mt-12 max-w-xs sm:max-w-none mx-auto">
+      <a href="/collections" class="px-8 py-4 sm:px-10 gold-gradient text-white font-bold text-[11px] sm:text-xs tracking-[0.3em] uppercase shadow-lg hover:scale-105 transition-transform text-center">Explore Atelier</a>
+      <a href="/portfolio" class="px-8 py-4 sm:px-10 border border-white text-white font-bold text-[11px] sm:text-xs tracking-[0.3em] uppercase hover:bg-white/10 transition-all backdrop-blur-sm text-center">View Portfolio</a>
     </div>
   </div>
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+  <div class="hidden sm:block absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
     <span class="material-symbols-outlined text-white/70">expand_more</span>
   </div>
 </section>
 
 <!-- Featured Collections -->
-<section class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
-  <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<section class="py-20 md:py-32 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto">
+  <div class="flex flex-col md:flex-row justify-between md:items-end mb-12 md:mb-20 gap-6 md:gap-8">
     <div>
       <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">Signature Pieces</span>
-      <h2 class="text-4xl md:text-6xl font-headline mt-4">The Collections</h2>
+      <h2 class="text-4xl md:text-6xl font-headline mt-3 md:mt-4">The Collections</h2>
     </div>
-    <p class="text-[#444] max-w-md font-light leading-relaxed">Every piece in our atelier is a testament to the pursuit of perfection — traditional craftsmanship met by contemporary vision.</p>
+    <p class="text-[#444] max-w-md font-light leading-relaxed text-sm md:text-base">Every piece in our atelier is a testament to the pursuit of perfection — traditional craftsmanship met by contemporary vision.</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[900px]">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 h-auto md:h-[900px]">
     {% set spans = ['md:col-span-8', 'md:col-span-4', 'md:col-span-4', 'md:col-span-8'] %}
     {% for c in collections %}
     <a href="/collections/{{ c.slug }}" class="{{ spans[loop.index0] | default('md:col-span-6') }} group relative overflow-hidden bg-surface-container-low border border-[#E0D9CF] block">
-      {% if c.image_url %}<img src="{{ c.image_url }}" alt="{{ c.name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 min-h-[300px] md:min-h-0"/>{% endif %}
+      {% if c.image_url %}<img src="{{ c.image_url }}" alt="{{ c.name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 aspect-[4/3] md:aspect-auto md:min-h-0"/>{% endif %}
       <div class="absolute inset-0 bg-gradient-to-t from-[#FFF8F0]/85 via-transparent to-transparent"></div>
-      <div class="absolute bottom-10 left-10">
-        <h3 class="text-3xl font-headline italic">{{ c.name }}</h3>
+      <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10">
+        <h3 class="text-2xl md:text-3xl font-headline italic">{{ c.name }}</h3>
         <p class="text-primary text-[10px] tracking-[0.3em] uppercase mt-2 font-bold">{{ c.tagline }}</p>
       </div>
     </a>
@@ -50,21 +50,21 @@
 
 <!-- Featured Products -->
 {% if featured.length %}
-<section class="py-32 bg-surface-container-low border-y border-[#E0D9CF]">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-20">
+<section class="py-20 md:py-32 bg-surface-container-low border-y border-[#E0D9CF]">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="text-center mb-12 md:mb-20">
       <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">House Selections</span>
-      <h2 class="text-4xl md:text-6xl font-headline mt-4">Featured Pieces</h2>
+      <h2 class="text-4xl md:text-6xl font-headline mt-3 md:mt-4">Featured Pieces</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
       {% for p in featured %}
       <a href="/products/{{ p.slug }}" class="group block">
         <div class="aspect-[4/5] overflow-hidden bg-white border border-[#E0D9CF]">
           {% if p.primary_image %}<img src="{{ p.primary_image }}" alt="{{ p.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>{% endif %}
         </div>
-        <h3 class="text-xl font-headline italic mt-6">{{ p.name }}</h3>
-        {% if p.short_description %}<p class="text-[#444] text-sm mt-2 font-light line-clamp-2">{{ p.short_description }}</p>{% endif %}
-        <p class="text-primary text-[10px] tracking-[0.3em] uppercase mt-3 font-bold">View Piece →</p>
+        <h3 class="text-base sm:text-lg md:text-xl font-headline italic mt-4 md:mt-6 leading-tight">{{ p.name }}</h3>
+        {% if p.short_description %}<p class="hidden sm:block text-[#444] text-sm mt-2 font-light line-clamp-2">{{ p.short_description }}</p>{% endif %}
+        <p class="text-primary text-[9px] sm:text-[10px] tracking-[0.3em] uppercase mt-2 md:mt-3 font-bold">View →</p>
       </a>
       {% endfor %}
     </div>
@@ -73,47 +73,47 @@
 {% endif %}
 
 <!-- Xevia Imagine -->
-<section class="py-32 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<section class="py-20 md:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
     <div class="relative">
       <div class="aspect-[4/5] bg-white overflow-hidden relative z-10 shadow-2xl border border-[#E0D9CF]">
         <img src="/images/products/design-4-3.jpg" class="w-full h-full object-cover" alt="Imagine"/>
       </div>
-      <div class="absolute -top-10 -right-10 w-64 h-64 border border-primary/20 -z-0"></div>
-      <div class="absolute -bottom-10 -left-10 text-primary opacity-5">
+      <div class="hidden md:block absolute -top-10 -right-10 w-64 h-64 border border-primary/20 -z-0"></div>
+      <div class="hidden md:block absolute -bottom-10 -left-10 text-primary opacity-5">
         <span class="text-[12rem] font-headline select-none">Imagine</span>
       </div>
     </div>
     <div>
       <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">Co-Creation</span>
-      <h2 class="text-5xl md:text-7xl font-headline mt-6 mb-8 leading-tight">{{ site.name }} <span class="italic">Imagine</span></h2>
-      <p class="text-[#444] text-lg leading-relaxed mb-10 font-light italic">"{{ settings.imagine_body }}"</p>
-      <ul class="space-y-6 mb-12">
-        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">auto_awesome</span><span class="text-sm tracking-widest uppercase font-semibold">Select Rare Gemstones</span></li>
-        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">edit_note</span><span class="text-sm tracking-widest uppercase font-semibold">Interactive 3D Sculpting</span></li>
-        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">history_edu</span><span class="text-sm tracking-widest uppercase font-semibold">Artisan Consultation</span></li>
+      <h2 class="text-4xl sm:text-5xl md:text-7xl font-headline mt-4 md:mt-6 mb-6 md:mb-8 leading-tight">{{ site.name }} <span class="italic">Imagine</span></h2>
+      <p class="text-[#444] text-base md:text-lg leading-relaxed mb-8 md:mb-10 font-light italic">"{{ settings.imagine_body }}"</p>
+      <ul class="space-y-4 md:space-y-6 mb-8 md:mb-12">
+        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">auto_awesome</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Select Rare Gemstones</span></li>
+        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">edit_note</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Interactive 3D Sculpting</span></li>
+        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">history_edu</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Artisan Consultation</span></li>
       </ul>
-      <button data-enquire data-title="Begin a Custom Design" class="px-12 py-5 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-lg hover:translate-x-2 transition-transform">Enquire Now</button>
+      <button data-enquire data-title="Begin a Custom Design" class="w-full sm:w-auto px-10 sm:px-12 py-4 sm:py-5 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-lg hover:translate-x-2 transition-transform">Enquire Now</button>
     </div>
   </div>
 </section>
 
 <!-- Pillars -->
-<section class="py-32 px-6 bg-surface-container-lowest border-y border-[#E0D9CF]">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div class="p-8 border border-[#E0D9CF] bg-surface">
-      <span class="material-symbols-outlined text-primary text-3xl mb-6">diamond</span>
-      <h4 class="text-xl font-headline mb-4">Ethical Sourcing</h4>
+<section class="py-20 md:py-32 px-5 sm:px-6 bg-surface-container-lowest border-y border-[#E0D9CF]">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
+    <div class="p-6 md:p-8 border border-[#E0D9CF] bg-surface">
+      <span class="material-symbols-outlined text-primary text-3xl mb-4 md:mb-6">diamond</span>
+      <h4 class="text-lg md:text-xl font-headline mb-3 md:mb-4">Ethical Sourcing</h4>
       <p class="text-[#444] font-light text-sm leading-relaxed">Every stone in our vault is conflict-free and traceable to its origin — beauty with integrity.</p>
     </div>
-    <div class="p-8 border border-[#E0D9CF] bg-surface">
-      <span class="material-symbols-outlined text-primary text-3xl mb-6">handyman</span>
-      <h4 class="text-xl font-headline mb-4">Master Craft</h4>
+    <div class="p-6 md:p-8 border border-[#E0D9CF] bg-surface">
+      <span class="material-symbols-outlined text-primary text-3xl mb-4 md:mb-6">handyman</span>
+      <h4 class="text-lg md:text-xl font-headline mb-3 md:mb-4">Master Craft</h4>
       <p class="text-[#444] font-light text-sm leading-relaxed">Our artisans spend hundreds of hours on a single piece, using techniques passed across generations.</p>
     </div>
-    <div class="p-8 border border-[#E0D9CF] bg-surface">
-      <span class="material-symbols-outlined text-primary text-3xl mb-6">verified</span>
-      <h4 class="text-xl font-headline mb-4">Lifetime Care</h4>
+    <div class="p-6 md:p-8 border border-[#E0D9CF] bg-surface">
+      <span class="material-symbols-outlined text-primary text-3xl mb-4 md:mb-6">verified</span>
+      <h4 class="text-lg md:text-xl font-headline mb-3 md:mb-4">Lifetime Care</h4>
       <p class="text-[#444] font-light text-sm leading-relaxed">Lifetime professional cleaning, resizing and restorative care for every piece we create.</p>
     </div>
   </div>
