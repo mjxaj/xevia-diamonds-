@@ -1,5 +1,11 @@
 const express = require('express');
+const crypto = require('node:crypto');
 const { all, get, run } = require('../lib/db');
+const {
+  sendMail,
+  subscriberWelcomeEmail,
+  adminSubscriberEmail,
+} = require('../lib/mailer');
 
 const router = express.Router();
 
@@ -95,17 +101,51 @@ router.get('/contact', (req, res) => {
 
 router.post('/subscribe', (req, res) => {
   const email = String(req.body.email || '').trim().toLowerCase();
-  if (email && /^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-    try {
-      run('INSERT OR IGNORE INTO subscribers (email) VALUES (?)', email);
-      req.session.flash = { type: 'success', message: 'Welcome to the private circle.' };
-    } catch (e) {
-      req.session.flash = { type: 'error', message: 'Something went wrong.' };
-    }
-  } else {
+  if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
     req.session.flash = { type: 'error', message: 'Please enter a valid email.' };
+    return res.redirect(req.get('referer') || '/');
   }
+
+  let isNew = false;
+  try {
+    const result = run('INSERT OR IGNORE INTO subscribers (email) VALUES (?)', email);
+    isNew = result.changes > 0;
+  } catch (e) {
+    req.session.flash = { type: 'error', message: 'Something went wrong.' };
+    return res.redirect(req.get('referer') || '/');
+  }
+
+  req.session.flash = { type: 'success', message: 'Welcome to the private circle.' };
   res.redirect(req.get('referer') || '/');
+
+  // Fire-and-forget emails after responding — only on the FIRST subscription
+  if (!isNew) return;
+  const siteName = res.locals.site.name;
+  const reference = 'XEV-NL-' + crypto.randomBytes(3).toString('hex').toUpperCase();
+  (async () => {
+    try {
+      await sendMail({
+        to: email,
+        subject: `${siteName} — Welcome to the Private Circle`,
+        html: subscriberWelcomeEmail({ siteName, reference }),
+      });
+
+      const notifyTo =
+        process.env.NOTIFY_EMAIL ||
+        res.locals.settings.contact_email ||
+        process.env.CONTACT_EMAIL;
+      if (notifyTo) {
+        await sendMail({
+          to: notifyTo,
+          replyTo: email,
+          subject: `[${siteName}] New Private Circle subscriber — ${email}`,
+          html: adminSubscriberEmail({ email, reference, siteName }),
+        });
+      }
+    } catch (e) {
+      console.error('Subscribe mail dispatch error:', e.message);
+    }
+  })();
 });
 
 module.exports = router;
