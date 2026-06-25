@@ -14,12 +14,15 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
     <div data-carousel class="relative">
-      <div class="aspect-[4/5] bg-white border border-[#E0D9CF] overflow-hidden relative">
+      <div class="aspect-[4/5] bg-white border border-[#E0D9CF] overflow-hidden relative cursor-zoom-in" data-carousel-zoom>
         {% for img in gallery_list %}
         <img src="{{ img }}" alt="{{ product.name }} — view {{ loop.index }}"
              data-slide="{{ loop.index0 }}"
              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 {% if loop.index0 == 0 %}opacity-100{% else %}opacity-0{% endif %}"/>
         {% endfor %}
+        <div class="absolute top-3 right-3 w-9 h-9 glass-panel border border-[#E0D9CF] flex items-center justify-center pointer-events-none z-[5]">
+          <span class="material-symbols-outlined text-[18px]">zoom_in</span>
+        </div>
       </div>
 
       {% if gallery_list.length > 1 %}
@@ -101,7 +104,9 @@
   const dots = car.querySelectorAll('[data-carousel-dot]');
   const prev = car.querySelector('[data-carousel-prev]');
   const next = car.querySelector('[data-carousel-next]');
+  const zoom = car.querySelector('[data-carousel-zoom]');
   let i = 0;
+  let autoAdvance = null;
   function show(n) {
     i = (n + slides.length) % slides.length;
     slides.forEach((s, idx) => { s.style.opacity = idx === i ? '1' : '0'; });
@@ -110,11 +115,63 @@
       d.classList.toggle('bg-[#E0D9CF]', idx !== i);
     });
   }
-  prev && prev.addEventListener('click', () => show(i - 1));
-  next && next.addEventListener('click', () => show(i + 1));
+  prev && prev.addEventListener('click', (e) => { e.stopPropagation(); show(i - 1); });
+  next && next.addEventListener('click', (e) => { e.stopPropagation(); show(i + 1); });
   dots.forEach((d) => d.addEventListener('click', () => show(Number(d.dataset.carouselDot))));
-  // Auto-advance every 6s
-  if (slides.length > 1) setInterval(() => show(i + 1), 6000);
+  if (slides.length > 1) autoAdvance = setInterval(() => show(i + 1), 6000);
+
+  // --- Fullscreen lightbox on image click ---
+  const lightbox = document.createElement('div');
+  lightbox.className = 'fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-4 cursor-zoom-out';
+  lightbox.innerHTML = `
+    <button type="button" data-lb-close class="absolute top-4 right-4 w-11 h-11 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <button type="button" data-lb-prev class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+    <button type="button" data-lb-next class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+    <img data-lb-img alt="" class="max-h-[90vh] max-w-[92vw] object-contain" />
+    <div data-lb-counter class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-xs tracking-[0.3em] uppercase font-bold"></div>
+  `;
+  document.body.appendChild(lightbox);
+  const lbImg = lightbox.querySelector('[data-lb-img]');
+  const lbCounter = lightbox.querySelector('[data-lb-counter]');
+  const imgs = Array.from(slides).map((s) => s.src);
+
+  function openLightbox(idx) {
+    if (autoAdvance) { clearInterval(autoAdvance); autoAdvance = null; }
+    setLightbox(idx);
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function setLightbox(idx) {
+    i = (idx + imgs.length) % imgs.length;
+    lbImg.src = imgs[i];
+    lbCounter.textContent = `${i + 1} / ${imgs.length}`;
+    show(i);
+  }
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  zoom && zoom.addEventListener('click', () => openLightbox(i));
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target === lbImg) closeLightbox();
+  });
+  lightbox.querySelector('[data-lb-close]').addEventListener('click', closeLightbox);
+  lightbox.querySelector('[data-lb-prev]').addEventListener('click', (e) => { e.stopPropagation(); setLightbox(i - 1); });
+  lightbox.querySelector('[data-lb-next]').addEventListener('click', (e) => { e.stopPropagation(); setLightbox(i + 1); });
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') setLightbox(i - 1);
+    if (e.key === 'ArrowRight') setLightbox(i + 1);
+  });
 })();
 </script>
 {% endblock %}
