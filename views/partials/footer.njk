@@ -1,54 +1,77 @@
-<footer class="bg-[#FFF8F0] border-t border-[#E0D9CF] mt-20 md:mt-32">
-  <section class="py-16 md:py-24 border-b border-[#E0D9CF]">
-    <div class="max-w-3xl mx-auto px-5 sm:px-6 text-center">
-      <h2 class="text-3xl sm:text-4xl font-headline mb-4 md:mb-6">{{ settings.newsletter_heading | default('Join the Private Circle') }}</h2>
-      <p class="text-[#444] text-sm md:text-base mb-8 md:mb-10">{{ settings.newsletter_body | default('Receive exclusive invitations to private viewings and early access.') }}</p>
-      <form action="/subscribe" method="POST" class="flex flex-col md:flex-row gap-3 md:gap-4">
-        <input name="email" required type="email" placeholder="YOUR EMAIL ADDRESS" class="flex-grow bg-transparent border-b border-[#E0D9CF] text-[#101010] placeholder:text-[#444]/50 focus:border-primary focus:ring-0 px-3 md:px-4 py-3 md:py-4 text-xs tracking-widest uppercase transition-colors text-center md:text-left"/>
-        <button class="bg-primary text-white px-8 md:px-10 py-3 md:py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#a88563] transition-colors shadow-md">Subscribe</button>
+<footer class="bg-[#f6ede0] border-t border-[#e8dcc8] mt-20 md:mt-32 text-[#3a342c]">
+  <!-- Newsletter -->
+  <section class="py-16 md:py-24 border-b border-[#e8dcc8]/70 px-5 sm:px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="text-[#9a7c45] text-[10px] tracking-[0.4em] uppercase font-semibold mb-4">The Private Circle</p>
+      <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl text-[#1a1208] mb-3 md:mb-4 italic font-light">{{ settings.newsletter_heading | default('Join the Private Circle') }}</h2>
+      <p class="text-[#6b6253] text-sm md:text-base leading-relaxed mb-10 max-w-md mx-auto">{{ settings.newsletter_body | default('Receive exclusive invitations to private viewings and early access to our High Jewellery collections.') }}</p>
+
+      <form action="/subscribe" method="POST" class="max-w-md mx-auto">
+        <div class="flex items-stretch bg-white border border-[#d9c8a8] focus-within:border-[#9a7c45] transition-colors overflow-hidden shadow-sm">
+          <input
+            name="email"
+            required
+            type="email"
+            placeholder="your.email@example.com"
+            class="flex-1 min-w-0 bg-transparent text-[#1a1208] placeholder:text-[#9a8e75] focus:outline-none focus:ring-0 border-0 px-4 sm:px-5 py-3 sm:py-4 text-sm tracking-wide"/>
+          <button type="submit" class="shrink-0 bg-[#9a7c45] hover:bg-[#1a1208] text-white px-6 sm:px-8 py-3 sm:py-4 text-[10px] tracking-[0.3em] uppercase font-semibold transition-colors">
+            Subscribe
+          </button>
+        </div>
+        <p class="text-[10px] text-[#9a8e75] tracking-wider mt-4">We respect your privacy. Unsubscribe anytime.</p>
       </form>
     </div>
   </section>
-  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-12 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+
+  <!-- Brand + columns -->
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 py-12 md:py-16 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
     <div class="col-span-2 md:col-span-1">
-      <div class="text-xl font-serif tracking-[0.3em] uppercase mb-3 md:mb-4">{{ site.name }}</div>
-      <p class="text-sm text-[#444] font-light leading-relaxed">{{ site.tagline }}<br/>Est. {{ site.established }}</p>
+      <a href="/" class="inline-flex flex-col items-start leading-none">
+        <span class="text-[#b8985f] text-base">✦</span>
+        <span class="font-headline text-xl tracking-[0.22em] uppercase mt-1">{{ site.name }}</span>
+        <span class="text-[8px] tracking-[0.5em] uppercase text-[#b8985f] mt-1">Diamonds</span>
+      </a>
+      <p class="text-sm text-[#6b6253] font-light leading-relaxed mt-5 max-w-[240px]">{{ site.tagline }}<br/>Est. {{ site.established }}</p>
     </div>
     <div>
-      <h4 class="text-[10px] tracking-[0.3em] uppercase font-bold mb-3 md:mb-4 text-primary">Atelier</h4>
-      <ul class="space-y-2 text-sm text-[#444]">
-        <li><a href="/collections" class="hover:text-primary">Collections</a></li>
-        <li><a href="/portfolio" class="hover:text-primary">Portfolio</a></li>
-        <li><a href="/imagine" class="hover:text-primary">Imagine</a></li>
+      <h4 class="text-[10px] tracking-[0.35em] uppercase font-semibold mb-4 text-[#9a7c45]">Atelier</h4>
+      <ul class="space-y-2.5 text-sm text-[#6b6253]">
+        <li><a href="/collections" class="hover:text-[#1a1208] transition-colors">Collections</a></li>
+        <li><a href="/portfolio" class="hover:text-[#1a1208] transition-colors">Portfolio</a></li>
+        <li><a href="/imagine" class="hover:text-[#1a1208] transition-colors">Imagine</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="text-[10px] tracking-[0.3em] uppercase font-bold mb-3 md:mb-4 text-primary">House</h4>
-      <ul class="space-y-2 text-sm text-[#444]">
-        <li><a href="/about" class="hover:text-primary">Our Story</a></li>
-        <li><a href="/contact" class="hover:text-primary">Contact</a></li>
-        <li><button data-enquire data-title="Private Concierge" class="hover:text-primary text-left">Private Concierge</button></li>
+      <h4 class="text-[10px] tracking-[0.35em] uppercase font-semibold mb-4 text-[#9a7c45]">House</h4>
+      <ul class="space-y-2.5 text-sm text-[#6b6253]">
+        <li><a href="/about" class="hover:text-[#1a1208] transition-colors">Our Story</a></li>
+        <li><a href="/contact" class="hover:text-[#1a1208] transition-colors">Contact</a></li>
+        <li><button data-enquire data-title="Private Concierge" class="hover:text-[#1a1208] transition-colors text-left">Private Concierge</button></li>
       </ul>
     </div>
     <div class="col-span-2 md:col-span-1">
-      <h4 class="text-[10px] tracking-[0.3em] uppercase font-bold mb-3 md:mb-4 text-primary">Contact</h4>
-      <ul class="space-y-2 text-sm text-[#444]">
-        {% if site.contact_email %}<li><a href="mailto:{{ site.contact_email }}" class="hover:text-primary break-all">{{ site.contact_email }}</a></li>{% endif %}
-        {% if site.contact_phone %}<li><a href="tel:{{ site.contact_phone }}" class="hover:text-primary">{{ site.contact_phone }}</a></li>{% endif %}
+      <h4 class="text-[10px] tracking-[0.35em] uppercase font-semibold mb-4 text-[#9a7c45]">Contact</h4>
+      <ul class="space-y-2.5 text-sm text-[#6b6253]">
+        {% if site.contact_email %}<li><a href="mailto:{{ site.contact_email }}" class="hover:text-[#1a1208] transition-colors break-all">{{ site.contact_email }}</a></li>{% endif %}
+        {% if site.contact_phone %}<li><a href="tel:{{ site.contact_phone }}" class="hover:text-[#1a1208] transition-colors">{{ site.contact_phone }}</a></li>{% endif %}
         {% if site.contact_address %}<li>{{ site.contact_address }}</li>{% endif %}
       </ul>
     </div>
   </div>
-  <div class="border-t border-[#E0D9CF] py-4 px-4 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-[#444]/70">
-    <a href="/privacy-policy" class="hover:text-primary">Privacy Policy</a>
-    <span class="hidden md:inline">·</span>
-    <a href="/terms-conditions" class="hover:text-primary">Terms &amp; Conditions</a>
-    <span class="hidden md:inline">·</span>
-    <a href="/refund-policy" class="hover:text-primary">Refund Policy</a>
-    <span class="hidden md:inline">·</span>
-    <a href="/shipping-policy" class="hover:text-primary">Shipping Policy</a>
+
+  <!-- Policy links -->
+  <div class="border-t border-[#e8dcc8]/70 py-5 px-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[10px] tracking-[0.3em] uppercase text-[#6b6253]">
+    <a href="/privacy-policy" class="hover:text-[#1a1208] transition-colors">Privacy Policy</a>
+    <span class="text-[#b8985f]/50">·</span>
+    <a href="/terms-conditions" class="hover:text-[#1a1208] transition-colors">Terms &amp; Conditions</a>
+    <span class="text-[#b8985f]/50">·</span>
+    <a href="/refund-policy" class="hover:text-[#1a1208] transition-colors">Refund Policy</a>
+    <span class="text-[#b8985f]/50">·</span>
+    <a href="/shipping-policy" class="hover:text-[#1a1208] transition-colors">Shipping Policy</a>
   </div>
-  <div class="border-t border-[#E0D9CF] py-5 md:py-6 px-4 text-center text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-[#444]/60">
-    &copy; {{ site.name }} — {{ site.established }} · All rights reserved
+
+  <!-- Copyright -->
+  <div class="border-t border-[#e8dcc8]/70 py-5 md:py-6 px-4 text-center text-[10px] tracking-[0.3em] uppercase text-[#6b6253]/80">
+    &copy; {{ site.established }} {{ site.name }} Diamonds &middot; All rights reserved
   </div>
 </footer>
