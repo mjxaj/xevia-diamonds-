@@ -9,6 +9,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<!-- Tailwind is required for the shared enquiry-modal partial to style correctly -->
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        'primary': '#b8985f', 'on-primary': '#fff',
+        'surface': '#f3eee6', 'surface-container-low': '#ece4d8',
+        'on-surface': '#3a342c', 'on-surface-variant': '#6b6253',
+        'outline-variant': 'rgba(120,104,76,.22)'
+      },
+      fontFamily: { 'headline': ['Cormorant Garamond', 'serif'], 'label': ['Jost', 'sans-serif'] },
+      borderRadius: { 'DEFAULT':'0rem','lg':'0rem','xl':'0rem','full':'9999px' }
+    }}
+  }
+</script>
 <style>
   :root{
     --cream:#f3eee6; --cream-2:#ece4d8; --sand:#e4d8c7;
