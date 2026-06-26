@@ -15,10 +15,10 @@
 <section class="px-5 sm:px-6 pb-20 md:pb-32 max-w-7xl mx-auto">
   <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
     {% for d in designs %}
-    <div class="group block bg-white border border-[#E0D9CF] overflow-hidden">
-      <div class="aspect-[4/5] overflow-hidden relative">
+    <div class="group block border border-[#E0D9CF] overflow-hidden">
+      <div class="satin-card aspect-[4/5] overflow-hidden relative">
         <img src="{{ d.image }}" alt="Design {{ d.index }}"
-          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+          class="w-full h-full object-cover group-hover:scale-105"/>
       </div>
       <div class="px-3 sm:px-6 py-3 sm:py-4 flex items-center justify-between border-t border-[#E0D9CF]">
         <span class="text-[9px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.3em] uppercase font-bold text-[#444]">Plate {{ d.index }}</span>

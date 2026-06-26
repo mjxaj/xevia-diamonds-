@@ -13,6 +13,41 @@
   body { font-family: 'Manrope', sans-serif; background-color: #FFF8F0; color: #101010; min-height: 100dvh; overflow-x: hidden; }
   .safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
   img { max-width: 100%; height: auto; }
+
+  /* Warm gold-satin tray — matches the requested champagne backdrop */
+  .gold-satin {
+    background-color: #d9b87a;
+    background-image:
+      radial-gradient(ellipse 60% 45% at 22% 15%, rgba(255,247,221,0.85), transparent 65%),
+      radial-gradient(ellipse 55% 40% at 78% 22%, rgba(255,234,184,0.55), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 60% 85%, rgba(160,118,60,0.45), transparent 65%),
+      radial-gradient(ellipse 35% 25% at 35% 60%, rgba(255,255,255,0.30), transparent 70%),
+      linear-gradient(155deg, #f3dca5 0%, #d3a464 45%, #b07f3e 100%);
+    background-blend-mode: screen, screen, multiply, screen, normal;
+  }
+  /* shimmery moving light — purely decorative */
+  .gold-satin::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(115deg, transparent 35%, rgba(255,250,225,0.35) 50%, transparent 65%);
+    mix-blend-mode: screen;
+  }
+  .gold-satin-frame { position: relative; isolation: isolate; }
+  .gold-satin-frame .gold-satin { position: absolute; inset: 0; z-index: 0; }
+  .gold-satin-frame > *:not(.gold-satin) { position: relative; z-index: 1; }
+  /* card-style: image floats on the gold tray with a soft inner shadow */
+  .satin-card {
+    position: relative; isolation: isolate; overflow: hidden;
+    background-color: #d9b87a;
+    background-image:
+      radial-gradient(ellipse 60% 45% at 22% 15%, rgba(255,247,221,0.85), transparent 65%),
+      radial-gradient(ellipse 55% 40% at 78% 22%, rgba(255,234,184,0.55), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 60% 85%, rgba(160,118,60,0.45), transparent 65%),
+      radial-gradient(ellipse 35% 25% at 35% 60%, rgba(255,255,255,0.30), transparent 70%),
+      linear-gradient(155deg, #f3dca5 0%, #d3a464 45%, #b07f3e 100%);
+    background-blend-mode: screen, screen, multiply, screen, normal;
+  }
+  .satin-card > img { transition: transform .7s ease; }
+  .satin-card.blend > img { mix-blend-mode: multiply; }
   h1, h2, h3, .serif { font-family: 'Noto Serif', serif; }
   .gold-gradient { background: linear-gradient(135deg, #C5A384 0%, #a88563 100%); }
   .glass-panel { background: rgba(255, 248, 240, 0.85); backdrop-filter: blur(20px); }

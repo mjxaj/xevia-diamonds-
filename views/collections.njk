@@ -17,8 +17,8 @@
     </div>
     <div class="md:col-span-7 grid grid-cols-2 gap-3 sm:gap-4">
       {% for p in productsByCol[c.id] %}
-      <a href="/products/{{ p.slug }}" class="aspect-square overflow-hidden bg-white border border-[#E0D9CF] block group">
-        {% if p.primary_image %}<img src="{{ p.primary_image }}" alt="{{ p.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>{% endif %}
+      <a href="/products/{{ p.slug }}" class="satin-card aspect-square overflow-hidden border border-[#E0D9CF] block group">
+        {% if p.primary_image %}<img src="{{ p.primary_image }}" alt="{{ p.name }}" class="w-full h-full object-cover group-hover:scale-105"/>{% endif %}
       </a>
       {% endfor %}
     </div>
