@@ -8,3 +8,4 @@ data/sessions.db
 stitch-source/
 .DS_Store
 public/uploads/
+tmp/
