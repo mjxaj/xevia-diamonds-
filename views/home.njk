@@ -1,128 +1,211 @@
 {% extends '_base.njk' %}
+{% block head %}
+<style>
+  .cream-bg { background-color: #f6ede0; }
+  .cream-bg-soft { background-color: #faf3e7; }
+  .ivory-bg { background-color: #fbf6ec; }
+  .gold-text { color: #b8956a; }
+  .gold-btn { background: linear-gradient(135deg, #c5a374 0%, #a88563 100%); }
+  .gold-btn:hover { background: linear-gradient(135deg, #b8956a 0%, #9a7754 100%); }
+  .serif-display { font-family: 'Noto Serif', serif; letter-spacing: -0.01em; }
+  .hairline { display:inline-block; width: 64px; height: 1px; background: #b8956a; vertical-align: middle; }
+  .prism { background-image: radial-gradient(ellipse at top right, rgba(255,240,210,0.5), transparent 60%), radial-gradient(ellipse at bottom left, rgba(245,225,195,0.4), transparent 50%); }
+</style>
+{% endblock %}
 {% block content %}
 
-<!-- Hero -->
-<section class="relative min-h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden -mt-16 sm:-mt-20">
-  <div class="absolute inset-0 z-0">
-    <img alt="{{ site.name }} hero" class="w-full h-full object-cover brightness-75" src="{{ settings.hero_image }}"/>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#FFF8F0] via-transparent to-black/20"></div>
-  </div>
-  <div class="relative z-10 text-center px-5 sm:px-6 pt-24 pb-12 w-full">
-    <p class="text-primary font-label text-[10px] sm:text-xs tracking-[0.35em] sm:tracking-[0.4em] uppercase mb-5 sm:mb-6 font-bold">{{ settings.hero_eyebrow | default('Established ' + site.established) }}</p>
-    <h1 class="text-[2.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl text-white font-headline mb-8 max-w-4xl mx-auto drop-shadow-lg">
-      {{ settings.hero_title_line1 | default(site.name + ' Fine') }} <br/>
-      <span class="italic">{{ settings.hero_title_line2 | default('Jewellery') }}</span>
-    </h1>
-    <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-stretch sm:items-center mt-10 sm:mt-12 max-w-xs sm:max-w-none mx-auto">
-      <a href="/collections" class="px-8 py-4 sm:px-10 gold-gradient text-white font-bold text-[11px] sm:text-xs tracking-[0.3em] uppercase shadow-lg hover:scale-105 transition-transform text-center">Explore Atelier</a>
-      <a href="/portfolio" class="px-8 py-4 sm:px-10 border border-white text-white font-bold text-[11px] sm:text-xs tracking-[0.3em] uppercase hover:bg-white/10 transition-all backdrop-blur-sm text-center">View Portfolio</a>
-    </div>
-  </div>
-  <div class="hidden sm:block absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-    <span class="material-symbols-outlined text-white/70">expand_more</span>
-  </div>
-</section>
-
-<!-- Featured Collections -->
-<section class="py-20 md:py-32 px-5 sm:px-6 md:px-16 max-w-7xl mx-auto">
-  <div class="flex flex-col md:flex-row justify-between md:items-end mb-12 md:mb-20 gap-6 md:gap-8">
-    <div>
-      <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">Signature Pieces</span>
-      <h2 class="text-4xl md:text-6xl font-headline mt-3 md:mt-4">The Collections</h2>
-    </div>
-    <p class="text-[#444] max-w-md font-light leading-relaxed text-sm md:text-base">Every piece in our atelier is a testament to the pursuit of perfection — traditional craftsmanship met by contemporary vision.</p>
+<!-- ======================= HERO ======================= -->
+<section class="relative cream-bg overflow-hidden -mt-16 sm:-mt-20 pt-24 sm:pt-32 pb-16 sm:pb-24 prism">
+  <div class="absolute inset-0 z-0 opacity-60">
+    <img src="/images/products/design-9-3.jpg" alt="" class="w-full h-full object-cover mix-blend-luminosity"/>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#f6ede0] via-[#f6ede0]/70 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#f6ede0] via-transparent to-transparent"></div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 h-auto md:h-[900px]">
-    {% set spans = ['md:col-span-8', 'md:col-span-4', 'md:col-span-4', 'md:col-span-8'] %}
-    {% for c in collections %}
-    <a href="/collections/{{ c.slug }}" class="{{ spans[loop.index0] | default('md:col-span-6') }} group relative overflow-hidden bg-surface-container-low border border-[#E0D9CF] block">
-      {% if c.image_url %}<img src="{{ c.image_url }}" alt="{{ c.name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 aspect-[4/3] md:aspect-auto md:min-h-0"/>{% endif %}
-      <div class="absolute inset-0 bg-gradient-to-t from-[#FFF8F0]/85 via-transparent to-transparent"></div>
-      <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10">
-        <h3 class="text-2xl md:text-3xl font-headline italic">{{ c.name }}</h3>
-        <p class="text-primary text-[10px] tracking-[0.3em] uppercase mt-2 font-bold">{{ c.tagline }}</p>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-</section>
-
-<!-- Featured Products -->
-{% if featured.length %}
-<section class="py-20 md:py-32 bg-surface-container-low border-y border-[#E0D9CF]">
-  <div class="max-w-7xl mx-auto px-5 sm:px-6">
-    <div class="text-center mb-12 md:mb-20">
-      <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">House Selections</span>
-      <h2 class="text-4xl md:text-6xl font-headline mt-3 md:mt-4">Featured Pieces</h2>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-      {% for p in featured %}
-      <a href="/products/{{ p.slug }}" class="group block">
-        <div class="aspect-[4/5] overflow-hidden bg-white border border-[#E0D9CF]">
-          {% if p.primary_image %}<img src="{{ p.primary_image }}" alt="{{ p.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>{% endif %}
-        </div>
-        <h3 class="text-base sm:text-lg md:text-xl font-headline italic mt-4 md:mt-6 leading-tight">{{ p.name }}</h3>
-        {% if p.short_description %}<p class="hidden sm:block text-[#444] text-sm mt-2 font-light line-clamp-2">{{ p.short_description }}</p>{% endif %}
-        <p class="text-primary text-[9px] sm:text-[10px] tracking-[0.3em] uppercase mt-2 md:mt-3 font-bold">View →</p>
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
+    <div class="text-left">
+      <h1 class="serif-display text-[#1a1208] text-6xl sm:text-7xl md:text-8xl leading-[0.9]">XEVIA</h1>
+      <p class="text-[#a88563] text-xs sm:text-sm tracking-[0.5em] uppercase font-semibold mt-3">Diamonds</p>
+      <div class="my-8"><span class="hairline"></span></div>
+      <p class="serif-display text-2xl sm:text-3xl md:text-4xl text-[#1a1208] italic font-light leading-tight mb-4">Crafted To Captivate.</p>
+      <p class="text-[#5e4a35] text-base sm:text-lg leading-relaxed mb-1">Not Just A Jewel.</p>
+      <p class="text-[#5e4a35] text-base sm:text-lg leading-relaxed mb-10">A Feeling.</p>
+      <a href="/collections" class="inline-block px-10 sm:px-12 py-4 sm:py-5 gold-btn text-white text-[10px] tracking-[0.35em] uppercase font-bold shadow-md transition-all">
+        Discover The Collection
       </a>
+    </div>
+    <div class="relative hidden lg:block">
+      <div class="aspect-square w-full max-w-[520px] ml-auto">
+        <img src="/images/products/design-1-1.jpg" alt="Signature piece" class="w-full h-full object-cover shadow-2xl"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PHILOSOPHY ======================= -->
+<section class="cream-bg-soft py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+    <div class="ivory-bg p-10 md:p-16 flex flex-col justify-center">
+      <p class="text-[#a88563] text-[10px] tracking-[0.45em] uppercase font-bold mb-8">The Xevia Philosophy</p>
+      <h2 class="serif-display text-3xl sm:text-4xl md:text-5xl text-[#1a1208] leading-[1.1] mb-4">We do not<br/>create jewelry.</h2>
+      <h3 class="serif-display italic font-light text-2xl sm:text-3xl md:text-4xl text-[#1a1208] leading-tight mb-8">We create moments<br/>that become heirlooms.</h3>
+      <p class="text-[#5e4a35] text-sm leading-relaxed mb-8 max-w-md">At Xevia Diamonds, every piece is a reflection of timeless beauty, crafted with precision, passion, and a promise to be cherished forever.</p>
+      <a href="/about" class="inline-flex items-center gap-3 text-[10px] tracking-[0.4em] uppercase font-bold text-[#1a1208] hover:gold-text transition-colors">
+        Discover Our Story
+        <span class="material-symbols-outlined text-base">add</span>
+      </a>
+    </div>
+    <div class="relative aspect-[4/5] lg:aspect-auto lg:min-h-full overflow-hidden">
+      <img src="/images/products/design-4-3.jpg" alt="Xevia philosophy" class="w-full h-full object-cover"/>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SIGNATURE COLLECTIONS ======================= -->
+<section class="cream-bg py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 sm:px-10">
+    <div class="flex items-center gap-4 mb-10 md:mb-14">
+      <p class="text-[#a88563] text-[10px] tracking-[0.45em] uppercase font-bold">Signature Collections</p>
+      <span class="material-symbols-outlined text-[#a88563] text-base">add</span>
+    </div>
+    {% set fallback = ['/images/products/design-1-1.jpg','/images/products/design-2-1.jpg','/images/products/design-9-1.jpg'] %}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+      {% for c in collections %}
+        {% if loop.index <= 3 %}
+        <a href="/collections/{{ c.slug }}" class="group relative block overflow-hidden aspect-[4/5]">
+          <img src="{{ c.image_url | default(fallback[loop.index0]) }}" alt="{{ c.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-white">
+            <p class="serif-display text-2xl md:text-3xl leading-tight italic font-light">{{ c.name }}</p>
+            <p class="text-[10px] tracking-[0.4em] uppercase font-semibold mt-2 opacity-90">Collection</p>
+          </div>
+        </a>
+        {% endif %}
       {% endfor %}
     </div>
   </div>
 </section>
-{% endif %}
 
-<!-- Xevia Imagine -->
-<section class="py-20 md:py-32 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
-    <div class="relative">
-      <div class="aspect-[4/5] bg-white overflow-hidden relative z-10 shadow-2xl border border-[#E0D9CF]">
-        <img src="/images/products/design-4-3.jpg" class="w-full h-full object-cover" alt="Imagine"/>
-      </div>
-      <div class="hidden md:block absolute -top-10 -right-10 w-64 h-64 border border-primary/20 -z-0"></div>
-      <div class="hidden md:block absolute -bottom-10 -left-10 text-primary opacity-5">
-        <span class="text-[12rem] font-headline select-none">Imagine</span>
-      </div>
+<!-- ======================= PRECISION ======================= -->
+<section class="cream-bg-soft py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="relative aspect-square overflow-hidden">
+      <img src="/images/products/design-12-1.jpg" alt="Precision diamond" class="w-full h-full object-cover"/>
     </div>
-    <div>
-      <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">Co-Creation</span>
-      <h2 class="text-4xl sm:text-5xl md:text-7xl font-headline mt-4 md:mt-6 mb-6 md:mb-8 leading-tight">{{ site.name }} <span class="italic">Imagine</span></h2>
-      <p class="text-[#444] text-base md:text-lg leading-relaxed mb-8 md:mb-10 font-light italic">"{{ settings.imagine_body }}"</p>
-      <ul class="space-y-4 md:space-y-6 mb-8 md:mb-12">
-        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">auto_awesome</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Select Rare Gemstones</span></li>
-        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">edit_note</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Interactive 3D Sculpting</span></li>
-        <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary">history_edu</span><span class="text-xs sm:text-sm tracking-widest uppercase font-semibold">Artisan Consultation</span></li>
-      </ul>
-      <button data-enquire data-title="Begin a Custom Design" class="w-full sm:w-auto px-10 sm:px-12 py-4 sm:py-5 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-lg hover:translate-x-2 transition-transform">Enquire Now</button>
+    <div class="text-left lg:pl-10">
+      <h2 class="serif-display italic font-light text-4xl sm:text-5xl md:text-6xl text-[#1a1208] leading-tight mb-6">
+        Precision In<br/>Every Facet.
+      </h2>
+      <span class="hairline"></span>
+      <p class="text-[#a88563] text-[10px] tracking-[0.45em] uppercase font-bold mt-8 mb-2">Exceptional Diamonds.</p>
+      <p class="text-[#a88563] text-[10px] tracking-[0.45em] uppercase font-bold">Extraordinary You.</p>
     </div>
   </div>
 </section>
 
-<!-- Pillars -->
-<section class="py-20 md:py-32 px-5 sm:px-6 bg-surface-container-lowest border-y border-[#E0D9CF]">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
-    <div class="p-6 md:p-8 border border-[#E0D9CF] bg-surface">
-      <span class="material-symbols-outlined text-primary text-3xl mb-4 md:mb-6">diamond</span>
-      <h4 class="text-lg md:text-xl font-headline mb-3 md:mb-4">Ethical Sourcing</h4>
-      <p class="text-[#444] font-light text-sm leading-relaxed">Every stone in our vault is conflict-free and traceable to its origin — beauty with integrity.</p>
+<!-- ======================= CRAFTSMANSHIP PROCESS ======================= -->
+<section class="cream-bg py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 sm:px-10">
+    <div class="flex items-center gap-4 mb-12 md:mb-16">
+      <p class="text-[#a88563] text-[10px] tracking-[0.45em] uppercase font-bold">The Xevia Craftsmanship</p>
+      <span class="material-symbols-outlined text-[#a88563] text-base">add</span>
     </div>
-    <div class="p-6 md:p-8 border border-[#E0D9CF] bg-surface">
-      <span class="material-symbols-outlined text-primary text-3xl mb-4 md:mb-6">handyman</span>
-      <h4 class="text-lg md:text-xl font-headline mb-3 md:mb-4">Master Craft</h4>
-      <p class="text-[#444] font-light text-sm leading-relaxed">Our artisans spend hundreds of hours on a single piece, using techniques passed across generations.</p>
-    </div>
-    <div class="p-6 md:p-8 border border-[#E0D9CF] bg-surface">
-      <span class="material-symbols-outlined text-primary text-3xl mb-4 md:mb-6">verified</span>
-      <h4 class="text-lg md:text-xl font-headline mb-3 md:mb-4">Lifetime Care</h4>
-      <p class="text-[#444] font-light text-sm leading-relaxed">Lifetime professional cleaning, resizing and restorative care for every piece we create.</p>
+    {% set steps = [
+      ['diamond', 'Selection', 'Handpicked for brilliance & purity'],
+      ['content_cut', 'Cutting', 'Precision cut to perfect every facet'],
+      ['design_services', 'Setting', 'Expertly set for enduring beauty'],
+      ['auto_awesome', 'Polishing', 'Finished to achieve timeless radiance'],
+      ['favorite', 'Forever', 'Created to be cherished for generations']
+    ] %}
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-12 gap-x-4 md:gap-x-0 relative">
+      {% for s in steps %}
+      <div class="text-center relative">
+        <div class="flex justify-center mb-5">
+          <div class="w-14 h-14 rounded-full border border-[#d4b88f] flex items-center justify-center">
+            <span class="material-symbols-outlined text-[#a88563] text-2xl">{{ s[0] }}</span>
+          </div>
+        </div>
+        <p class="text-[10px] tracking-[0.45em] uppercase font-bold text-[#1a1208] mb-3">{{ s[1] }}</p>
+        <p class="text-xs leading-relaxed text-[#5e4a35] max-w-[160px] mx-auto">{{ s[2] }}</p>
+        {% if not loop.last %}
+        <div class="hidden md:flex absolute top-7 -right-2 lg:-right-4 text-[#d4b88f] items-center">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<!-- Concierge FAB -->
-<button data-enquire data-title="Private Concierge" class="fixed bottom-24 md:bottom-12 right-6 md:right-12 w-16 h-16 gold-gradient rounded-full shadow-2xl flex items-center justify-center text-white hover:rotate-12 transition-transform z-30 group">
-  <span class="material-symbols-outlined text-3xl">support_agent</span>
-  <span class="absolute right-20 bg-[#101010] text-white px-4 py-2 text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">Private Concierge</span>
+<!-- ======================= LIFESTYLE GALLERY ======================= -->
+<section class="cream-bg-soft py-2">
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-1">
+    {% set gallery = [
+      '/images/products/design-3-3.jpg',
+      '/images/products/design-4-3.jpg',
+      '/images/products/design-9-3.jpg',
+      '/images/products/design-12-3.jpg',
+      '/images/products/design-1-3.jpg'
+    ] %}
+    {% for img in gallery %}
+    <div class="aspect-[4/5] overflow-hidden">
+      <img src="{{ img }}" alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"/>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ======================= EXPERIENCE ======================= -->
+<section class="cream-bg py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="aspect-[4/5] overflow-hidden">
+      <img src="/images/products/design-14-3.jpg" alt="Xevia experience" class="w-full h-full object-cover"/>
+    </div>
+    <div class="lg:pl-10">
+      <p class="text-[#a88563] text-[10px] tracking-[0.45em] uppercase font-bold mb-6">The Xevia Experience</p>
+      <h2 class="serif-display italic font-light text-3xl sm:text-4xl md:text-5xl text-[#1a1208] leading-tight mb-10">
+        Every Xevia piece arrives<br/>as beautifully as it will<br/>be remembered.
+      </h2>
+      <button data-enquire data-title="Book Your Private Atelier Experience" class="inline-flex items-center gap-3 text-[10px] tracking-[0.45em] uppercase font-bold text-[#1a1208] hover:gold-text transition-colors border-b border-[#a88563] pb-2">
+        Discover The Experience
+        <span class="material-symbols-outlined text-base">add</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TESTIMONIALS ======================= -->
+<section class="cream-bg-soft py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-10">
+    <div class="flex items-center justify-center gap-4 mb-12 md:mb-16">
+      <p class="text-[#a88563] text-[10px] tracking-[0.45em] uppercase font-bold">Stories That Shine</p>
+      <span class="material-symbols-outlined text-[#a88563] text-base">add</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+      {% set stories = [
+        ['He proposed with a Xevia ring. The moment felt suspended in light.', 'Ananya S.'],
+        ['It’s not just the sparkle, it’s the feeling it holds.', 'Meghna R.'],
+        ['Timeless elegance, crafted with so much love.', 'Priyanka D.']
+      ] %}
+      {% for s in stories %}
+      <div class="text-center">
+        <span class="serif-display text-5xl text-[#b8956a] leading-none block">&ldquo;</span>
+        <p class="serif-display italic font-light text-lg sm:text-xl text-[#1a1208] leading-relaxed my-3">
+          {{ s[0] }}
+        </p>
+        <span class="serif-display text-5xl text-[#b8956a] leading-none block rotate-180 inline-block">&rdquo;</span>
+        <p class="text-[10px] tracking-[0.4em] uppercase font-bold text-[#5e4a35] mt-3">— {{ s[1] }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Floating Book Consultation (mobile-friendly FAB, repurposes enquiry modal) -->
+<button data-enquire data-title="Book a Private Consultation" class="fixed bottom-24 md:bottom-8 right-5 md:right-8 w-14 h-14 md:w-16 md:h-16 gold-btn rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 transition-transform z-30 group">
+  <span class="material-symbols-outlined text-2xl md:text-3xl">event_available</span>
+  <span class="hidden md:inline absolute right-20 bg-[#1a1208] text-white px-4 py-2 text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">Book Consultation</span>
 </button>
 
 {% endblock %}

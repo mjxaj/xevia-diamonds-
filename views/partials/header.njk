@@ -1,16 +1,18 @@
-<header class="fixed top-0 w-full z-40 flex justify-between items-center px-4 sm:px-6 h-16 sm:h-20 glass-panel border-b border-[#E0D9CF]">
-  <div class="flex items-center gap-4 sm:gap-6">
-    <a href="/" class="text-xl sm:text-2xl font-serif tracking-[0.2em] sm:tracking-[0.3em] text-[#101010] uppercase">{{ site.name }}</a>
-  </div>
-  <nav class="hidden md:flex items-center gap-10 text-xs tracking-[0.25em] uppercase font-semibold text-[#101010]">
+<header class="fixed top-0 w-full z-40 flex justify-between items-center px-4 sm:px-8 h-16 sm:h-20 glass-panel border-b border-[#E8DCC8]/60">
+  <a href="/" class="flex flex-col items-start leading-none">
+    <span class="text-xl sm:text-2xl font-serif tracking-[0.18em] sm:tracking-[0.2em] text-[#1a1208] uppercase">{{ site.name }}</span>
+    <span class="text-[8px] sm:text-[9px] tracking-[0.45em] uppercase text-[#a88563] font-semibold mt-1">Diamonds</span>
+  </a>
+  <nav class="hidden md:flex items-center gap-8 lg:gap-10 text-[10px] tracking-[0.3em] uppercase font-semibold text-[#1a1208]">
     <a href="/collections" class="hover:text-primary transition-colors {% if currentPath.startsWith('/collections') %}text-primary{% endif %}">Collections</a>
-    <a href="/portfolio" class="hover:text-primary transition-colors {% if currentPath == '/portfolio' %}text-primary{% endif %}">Portfolio</a>
-    <a href="/imagine" class="hover:text-primary transition-colors {% if currentPath == '/imagine' %}text-primary{% endif %}">Imagine</a>
-    <a href="/about" class="hover:text-primary transition-colors {% if currentPath == '/about' %}text-primary{% endif %}">Atelier</a>
-    <a href="/contact" class="hover:text-primary transition-colors {% if currentPath == '/contact' %}text-primary{% endif %}">Contact</a>
+    <a href="/collections/studs" class="hover:text-primary transition-colors">Engagement</a>
+    <a href="/portfolio" class="hover:text-primary transition-colors {% if currentPath == '/portfolio' %}text-primary{% endif %}">Fine Jewellery</a>
+    <a href="/about" class="hover:text-primary transition-colors {% if currentPath == '/about' %}text-primary{% endif %}">Our Story</a>
+    <a href="/imagine" class="hover:text-primary transition-colors {% if currentPath == '/imagine' %}text-primary{% endif %}">Journal</a>
   </nav>
-  <button data-enquire data-title="Enquire Now" class="hidden md:inline-flex px-6 py-3 gold-gradient text-white text-[10px] tracking-[0.3em] uppercase font-bold shadow-md hover:scale-105 transition-transform">
-    Enquire Now
+  <button data-enquire data-title="Book a Private Consultation" class="hidden md:inline-flex items-center gap-2 px-5 py-3 bg-[#b8956a] hover:bg-[#a88563] text-white text-[10px] tracking-[0.3em] uppercase font-bold shadow-md transition-all">
+    Book Consultation
+    <span class="material-symbols-outlined text-base">add</span>
   </button>
   <button aria-label="Open menu" class="md:hidden p-2 text-[#101010]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
     <span class="material-symbols-outlined">menu</span>
