@@ -44,29 +44,69 @@
       </div>
       {% endif %}
     </div>
-    <div class="py-2 md:py-4">
+    <div class="py-2 md:py-4" data-product-card>
       {% if product.collection_name %}<p class="text-primary text-[10px] tracking-[0.3em] uppercase font-bold">{{ product.collection_name }}</p>{% endif %}
-      <h1 class="text-3xl sm:text-4xl md:text-6xl font-headline italic mt-3 md:mt-4 mb-4 md:mb-6 leading-tight">{{ product.name }}</h1>
-      <p class="text-[#444] font-light leading-relaxed text-base md:text-lg mb-8 md:mb-10">{{ product.description }}</p>
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-headline italic mt-3 md:mt-4 mb-3 leading-tight">{{ product.name }}</h1>
+      <p class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#666] mb-5">SKU · XEV-{{ '%04d' % product.id }}</p>
+      <p class="text-[#444] font-light leading-relaxed text-base md:text-lg mb-8">{{ product.description }}</p>
 
+      {% if product.price_range %}
+      <div class="flex items-baseline gap-3 mb-8">
+        <span class="text-2xl md:text-3xl font-headline text-[#1a1208]">{{ product.price_range }}</span>
+      </div>
+      {% endif %}
+
+      <!-- Metal selector -->
+      <div class="mb-8">
+        <p class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-3">Metal</p>
+        <div class="flex items-center gap-3" data-metal-selector>
+          {% for m in [
+            ['yellow', 'Yellow Gold', 'linear-gradient(135deg, #d4af6a 0%, #b8956a 100%)'],
+            ['white', 'White Gold', 'linear-gradient(135deg, #e8e6e1 0%, #c9c5be 100%)'],
+            ['rose', 'Rose Gold', 'linear-gradient(135deg, #e0b4a0 0%, #c98a72 100%)']
+          ] %}
+          <button type="button" data-metal="{{ m[0] }}" data-metal-label="{{ m[1] }}"
+            class="metal-chip group flex flex-col items-center gap-2 {% if loop.index == 1 %}is-active{% endif %}">
+            <span class="w-10 h-10 rounded-full border-2 transition-all {% if loop.index == 1 %}border-[#1a1208]{% else %}border-transparent group-hover:border-[#a88563]{% endif %}" style="background: {{ m[2] }};"></span>
+            <span class="text-[9px] tracking-[0.2em] uppercase font-semibold text-[#666] group-hover:text-[#1a1208] transition-colors">{{ m[1] }}</span>
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- CTAs: Join Waitlist + Enquire Now -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-10">
+        <button data-enquire
+          data-enquiry-type="waitlist"
+          data-product-name="{{ product.name }}"
+          data-product-slug="{{ product.slug }}"
+          data-product-id="{{ product.id }}"
+          data-title="Join the Waitlist · {{ product.name }}"
+          data-metal-input="1"
+          class="flex-1 px-8 sm:px-10 py-4 border border-[#1a1208] text-[#1a1208] hover:bg-[#1a1208] hover:text-white font-bold text-xs tracking-[0.3em] uppercase transition-colors text-center">
+          Join Waitlist
+        </button>
+        <button data-enquire
+          data-enquiry-type="product"
+          data-product-name="{{ product.name }}"
+          data-product-slug="{{ product.slug }}"
+          data-product-id="{{ product.id }}"
+          data-title="Enquire · {{ product.name }}"
+          data-metal-input="1"
+          class="flex-1 px-8 sm:px-10 py-4 sm:py-4 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-lg hover:scale-[1.02] transition-transform text-center">
+          Enquire Now
+        </button>
+      </div>
+
+      <!-- Spec table -->
       <dl class="border-t border-[#E0D9CF] divide-y divide-[#E0D9CF] mb-8 md:mb-10">
         {% if product.metal %}<div class="grid grid-cols-3 py-3 md:py-4"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Metal</dt><dd class="col-span-2 text-sm">{{ product.metal }}</dd></div>{% endif %}
         {% if product.stones %}<div class="grid grid-cols-3 py-3 md:py-4"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Stones</dt><dd class="col-span-2 text-sm">{{ product.stones }}</dd></div>{% endif %}
         {% if product.carat_weight %}<div class="grid grid-cols-3 py-3 md:py-4"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Carat</dt><dd class="col-span-2 text-sm">{{ product.carat_weight }}</dd></div>{% endif %}
         {% if product.dimensions %}<div class="grid grid-cols-3 py-3 md:py-4"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Size</dt><dd class="col-span-2 text-sm">{{ product.dimensions }}</dd></div>{% endif %}
-        {% if product.price_range %}<div class="grid grid-cols-3 py-3 md:py-4"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Investment</dt><dd class="col-span-2 text-sm font-bold">{{ product.price_range }}</dd></div>{% endif %}
       </dl>
 
-      <button data-enquire
-        data-product-name="{{ product.name }}"
-        data-product-slug="{{ product.slug }}"
-        data-product-id="{{ product.id }}"
-        data-title="Enquire about {{ product.name }}"
-        class="w-full md:w-auto px-8 sm:px-12 py-4 sm:py-5 gold-gradient text-white font-bold text-xs tracking-[0.3em] uppercase shadow-lg hover:scale-[1.02] transition-transform">
-        Enquire Now
-      </button>
-
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8 md:mt-10 text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">
         <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">verified</span> Certified</div>
         <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">handyman</span> Hand-finished</div>
         <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">eco</span> Ethical</div>
@@ -160,6 +200,46 @@
     document.body.style.overflow = '';
   }
   zoom && zoom.addEventListener('click', () => openLightbox(i));
+
+  // --- Metal selector ---
+  const metalSelector = document.querySelector('[data-metal-selector]');
+  if (metalSelector) {
+    metalSelector.querySelectorAll('[data-metal]').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        metalSelector.querySelectorAll('[data-metal]').forEach((c) => {
+          c.classList.remove('is-active');
+          const sw = c.querySelector('span');
+          sw && sw.classList.remove('border-[#1a1208]');
+          sw && sw.classList.add('border-transparent');
+        });
+        chip.classList.add('is-active');
+        const sw = chip.querySelector('span');
+        sw && sw.classList.remove('border-transparent');
+        sw && sw.classList.add('border-[#1a1208]');
+      });
+    });
+  }
+
+  // --- Inject metal preference + waitlist type into modal AFTER it opens ---
+  document.querySelectorAll('[data-enquire][data-metal-input="1"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      setTimeout(() => {
+        const modal = document.getElementById('enquiry-modal');
+        if (!modal) return;
+        const active = document.querySelector('[data-metal].is-active');
+        const metalLabel = active ? active.dataset.metalLabel : '';
+        const typeInput = modal.querySelector('input[name="enquiry_type"]');
+        if (typeInput) typeInput.value = btn.dataset.enquiryType || 'product';
+        const msgField = modal.querySelector('textarea[name="message"]');
+        if (msgField && metalLabel) {
+          const prefix = `Preferred metal: ${metalLabel}\n\n`;
+          if (!msgField.value.startsWith('Preferred metal:')) {
+            msgField.value = prefix + (msgField.value || '');
+          }
+        }
+      }, 60);
+    });
+  });
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox || e.target === lbImg) closeLightbox();
   });

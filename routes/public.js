@@ -99,6 +99,19 @@ router.get('/contact', (req, res) => {
   res.render('contact.njk', { title: 'Contact' });
 });
 
+router.get('/privacy-policy', (req, res) => {
+  res.render('privacy.njk', { title: 'Privacy Policy', heading: 'Privacy Policy', eyebrow: 'Legal', lastUpdated: 'June 2026' });
+});
+router.get('/terms-conditions', (req, res) => {
+  res.render('terms.njk', { title: 'Terms & Conditions', heading: 'Terms & Conditions', eyebrow: 'Legal', lastUpdated: 'June 2026' });
+});
+router.get('/refund-policy', (req, res) => {
+  res.render('refund.njk', { title: 'Refund & Return Policy', heading: 'Refund & Return Policy', eyebrow: 'Customer Care', lastUpdated: 'June 2026' });
+});
+router.get('/shipping-policy', (req, res) => {
+  res.render('shipping.njk', { title: 'Shipping Policy', heading: 'Shipping Policy', eyebrow: 'Customer Care', lastUpdated: 'June 2026' });
+});
+
 router.post('/subscribe', (req, res) => {
   const email = String(req.body.email || '').trim().toLowerCase();
   if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {

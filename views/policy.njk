@@ -1,0 +1,28 @@
+{% extends '_base.njk' %}
+{% block content %}
+<section class="bg-[#fbf6ec] py-16 sm:py-20 px-5 sm:px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="text-[#a88563] text-[10px] tracking-[0.45em] uppercase font-bold mb-4">{{ eyebrow | default('Legal') }}</p>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-headline italic text-[#1a1208]">{{ heading }}</h1>
+    {% if lastUpdated %}<p class="text-xs text-[#5e4a35] mt-6 tracking-widest uppercase">Last updated · {{ lastUpdated }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="py-12 md:py-20 px-5 sm:px-6 bg-[#f6ede0]">
+  <article class="max-w-3xl mx-auto bg-white p-8 sm:p-12 md:p-16 shadow-sm policy-body">
+    {% block policy_body %}{% endblock %}
+  </article>
+</section>
+
+<style>
+  .policy-body h2 { font-family: 'Noto Serif', serif; font-size: 1.5rem; color: #1a1208; margin-top: 2.5rem; margin-bottom: 1rem; }
+  .policy-body h2:first-child { margin-top: 0; }
+  .policy-body h3 { font-family: 'Noto Serif', serif; font-size: 1.15rem; color: #1a1208; margin-top: 1.5rem; margin-bottom: 0.75rem; font-style: italic; font-weight: 400; }
+  .policy-body p { color: #4a382a; line-height: 1.75; margin-bottom: 1rem; font-size: 0.95rem; }
+  .policy-body ul, .policy-body ol { color: #4a382a; padding-left: 1.5rem; margin-bottom: 1rem; line-height: 1.75; font-size: 0.95rem; }
+  .policy-body ul li, .policy-body ol li { margin-bottom: 0.5rem; }
+  .policy-body strong { color: #1a1208; font-weight: 600; }
+  .policy-body a { color: #b8956a; text-decoration: underline; }
+  .policy-body hr { border: none; border-top: 1px solid #e8dcc8; margin: 2rem 0; }
+</style>
+{% endblock %}
