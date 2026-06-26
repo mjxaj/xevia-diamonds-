@@ -57,7 +57,7 @@
       {% endif %}
 
       <!-- Metal selector -->
-      <div class="mb-8">
+      <div class="mb-7">
         <p class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-3">Metal</p>
         <div class="flex items-center gap-3" data-metal-selector>
           {% for m in [
@@ -69,6 +69,24 @@
             class="metal-chip group flex flex-col items-center gap-2 {% if loop.index == 1 %}is-active{% endif %}">
             <span class="w-10 h-10 rounded-full border-2 transition-all {% if loop.index == 1 %}border-[#1a1208]{% else %}border-transparent group-hover:border-[#a88563]{% endif %}" style="background: {{ m[2] }};"></span>
             <span class="text-[9px] tracking-[0.2em] uppercase font-semibold text-[#666] group-hover:text-[#1a1208] transition-colors">{{ m[1] }}</span>
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Carat selector -->
+      <div class="mb-8">
+        <p class="text-[10px] tracking-[0.3em] uppercase font-bold text-[#444] mb-3">Gold Purity</p>
+        <div class="flex items-center gap-3" data-carat-selector>
+          {% for k in [
+            ['9kt', '9 KT'],
+            ['14kt', '14 KT'],
+            ['18kt', '18 KT']
+          ] %}
+          <button type="button" data-carat="{{ k[0] }}" data-carat-label="{{ k[1] }}"
+            class="carat-chip {% if loop.index == 2 %}is-active{% endif %} px-5 py-3 text-xs tracking-[0.25em] uppercase font-bold transition-all
+              {% if loop.index == 2 %}bg-[#1a1208] text-white border border-[#1a1208]{% else %}bg-transparent text-[#1a1208] border border-[#d4d4d4] hover:border-[#1a1208]{% endif %}">
+            {{ k[1] }}
           </button>
           {% endfor %}
         </div>
@@ -106,10 +124,23 @@
         {% if product.dimensions %}<div class="grid grid-cols-3 py-3 md:py-4"><dt class="text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">Size</dt><dd class="col-span-2 text-sm">{{ product.dimensions }}</dd></div>{% endif %}
       </dl>
 
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[10px] tracking-[0.25em] uppercase font-bold text-[#444]">
-        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">verified</span> Certified</div>
-        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">handyman</span> Hand-finished</div>
-        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">eco</span> Ethical</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 text-center pt-6 border-t border-[#E0D9CF]">
+        <div class="flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl">verified</span>
+          <span class="text-[9px] tracking-[0.25em] uppercase font-bold text-[#444]">IGI / SGL Certified</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl">workspace_premium</span>
+          <span class="text-[9px] tracking-[0.25em] uppercase font-bold text-[#444]">BIS Hallmarked</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl">local_shipping</span>
+          <span class="text-[9px] tracking-[0.25em] uppercase font-bold text-[#444]">Free Shipping</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl">handshake</span>
+          <span class="text-[9px] tracking-[0.25em] uppercase font-bold text-[#444]">Lifetime Exchange</span>
+        </div>
       </div>
     </div>
   </div>
@@ -220,20 +251,42 @@
     });
   }
 
-  // --- Inject metal preference + waitlist type into modal AFTER it opens ---
+  // --- Carat selector ---
+  const caratSelector = document.querySelector('[data-carat-selector]');
+  if (caratSelector) {
+    caratSelector.querySelectorAll('[data-carat]').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        caratSelector.querySelectorAll('[data-carat]').forEach((c) => {
+          c.classList.remove('is-active');
+          c.classList.remove('bg-[#1a1208]', 'text-white', 'border-[#1a1208]');
+          c.classList.add('bg-transparent', 'text-[#1a1208]', 'border-[#d4d4d4]');
+        });
+        chip.classList.add('is-active');
+        chip.classList.remove('bg-transparent', 'text-[#1a1208]', 'border-[#d4d4d4]');
+        chip.classList.add('bg-[#1a1208]', 'text-white', 'border-[#1a1208]');
+      });
+    });
+  }
+
+  // --- Inject metal + carat preference + waitlist type into modal AFTER it opens ---
   document.querySelectorAll('[data-enquire][data-metal-input="1"]').forEach((btn) => {
     btn.addEventListener('click', () => {
       setTimeout(() => {
         const modal = document.getElementById('enquiry-modal');
         if (!modal) return;
-        const active = document.querySelector('[data-metal].is-active');
-        const metalLabel = active ? active.dataset.metalLabel : '';
+        const activeMetal = document.querySelector('[data-metal].is-active');
+        const activeCarat = document.querySelector('[data-carat].is-active');
+        const metalLabel = activeMetal ? activeMetal.dataset.metalLabel : '';
+        const caratLabel = activeCarat ? activeCarat.dataset.caratLabel : '';
         const typeInput = modal.querySelector('input[name="enquiry_type"]');
         if (typeInput) typeInput.value = btn.dataset.enquiryType || 'product';
         const msgField = modal.querySelector('textarea[name="message"]');
-        if (msgField && metalLabel) {
-          const prefix = `Preferred metal: ${metalLabel}\n\n`;
-          if (!msgField.value.startsWith('Preferred metal:')) {
+        if (msgField && (metalLabel || caratLabel)) {
+          const lines = [];
+          if (metalLabel) lines.push(`Preferred metal: ${metalLabel}`);
+          if (caratLabel) lines.push(`Preferred purity: ${caratLabel}`);
+          const prefix = lines.join('\n') + '\n\n';
+          if (!msgField.value.startsWith('Preferred')) {
             msgField.value = prefix + (msgField.value || '');
           }
         }
