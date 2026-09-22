@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#9b414a",
+                        "primary-fixed": "#ffdadb",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary-fixed": "#ffe088",
+                        "secondary": "#e9c349",
+                        "secondary-container": "#af8d11",
+                        "surface-container-low": "#1b1b1b",
+                        "outline": "#a38b8c",
+                        "on-error": "#690005",
+                        "surface-bright": "#393939",
+                        "on-secondary": "#3c2f00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#353535",
+                        "error": "#ffb4ab",
+                        "on-primary": "#5f131f",
+                        "tertiary": "#c6c6c7",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-tertiary": "#2f3131",
+                        "inverse-on-surface": "#303030",
+                        "primary": "#ffb2b6",
+                        "surface-tint": "#ffb2b6",
+                        "on-secondary-container": "#342800",
+                        "primary-container": "#5a0f1c",
+                        "on-primary-fixed": "#40000d",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#554243",
+                        "background": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#2b2d2d",
+                        "surface-container": "#1f1f1f",
+                        "on-background": "#e2e2e2",
+                        "on-primary-container": "#de757d",
+                        "on-secondary-fixed": "#241a00",
+                        "on-surface": "#e2e2e2",
+                        "on-tertiary-container": "#939494",
+                        "on-primary-fixed-variant": "#7d2a34",
+                        "surface": "#131313",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#dbc0c1",
+                        "inverse-surface": "#e2e2e2",
+                        "primary-fixed-dim": "#ffb2b6",
+                        "surface-variant": "#353535"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353535;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-primary">
+<!-- Navigation Drawer -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col overflow-y-auto px-6 py-8 bg-[#1B1B1B] border-none z-40">
+<div class="mb-12">
+<span class="text-2xl font-['Noto_Serif'] font-black tracking-tighter text-[#FFB2B6]">XEVIA</span>
+</div>
+<nav class="flex flex-col space-y-1">
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 transition-all duration-300 hover:bg-[#393939] rounded-sm flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="border-l-2 border-[#E9C349] text-[#E9C349] font-semibold bg-transparent pl-4 py-3 transition-all duration-300 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-xl fill-icon" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span>Products</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 transition-all duration-300 hover:bg-[#393939] rounded-sm flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-xl">shopping_bag</span>
+<span>Orders</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 transition-all duration-300 hover:bg-[#393939] rounded-sm flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span>Customers</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 transition-all duration-300 hover:bg-[#393939] rounded-sm flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-xl">auto_awesome</span>
+<span>Xevia Imagine</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 transition-all duration-300 hover:bg-[#393939] rounded-sm flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-xl">auto_stories</span>
+<span>Content</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 transition-all duration-300 hover:bg-[#393939] rounded-sm flex items-center gap-4" href="#">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="mt-auto pt-8">
+<div class="bg-surface-container rounded-lg p-4 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional portrait of a creative director in a dark studio setting with cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDylCOeA0PfKsQDXLwYKAQHSt9dtKWL-AMmD_rAQGNqIO3p_S09eM3eUgztcSEHPzmiGNm-G8smM1tCDUvcbWjQlsT8W0-DHiWS0BzR3VsqTWhJcdayyPMfKnQ0MclMrlCP7Dm6YC87yoGRrTyq-bxKuRXkXnoxow6r7eOXKkicGQt1wvueFh74-Fp6bnzBoc-eReXEzFY28jgZRnptr6uS3mD41Ip1mgGIL-lIO6a4eQ32GDXVr-AaC4IybgE-ChtsUf8HAFBgMUE"/>
+<div>
+<p class="text-sm font-semibold text-on-surface">Julian Rossi</p>
+<p class="text-xs text-on-surface-variant opacity-60">Creative Director</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-72 min-h-screen">
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-18rem)] z-30 bg-[#131313]/80 backdrop-blur-xl flex justify-between items-center px-12 py-6">
+<h1 class="font-['Noto_Serif'] text-3xl font-black tracking-tight text-[#FFB2B6]">Products</h1>
+<div class="flex items-center gap-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-50 group-focus-within:text-secondary transition-colors">search</span>
+<input class="bg-surface-container-highest border-none rounded-md pl-10 pr-4 py-2 text-sm w-64 focus:ring-1 focus:ring-secondary/30 transition-all placeholder:text-on-surface-variant/40" placeholder="Search catalog..." type="text"/>
+</div>
+<button class="bg-gradient-to-br from-primary-container to-on-primary-fixed-variant text-primary-fixed px-6 py-2.5 rounded-md text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all shadow-xl shadow-primary-container/20">
+<span class="material-symbols-outlined text-lg">add</span>
+                    Add Product
+                </button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="pt-32 px-12 pb-12">
+<!-- Filters & Stats Bento -->
+<div class="grid grid-cols-12 gap-6 mb-12">
+<div class="col-span-8 bg-surface-container-low p-8 rounded-xl flex items-end justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant opacity-60 mb-2 block">Inventory Value</span>
+<h2 class="font-headline text-5xl font-black text-on-surface">$1,482,000</h2>
+<div class="flex items-center gap-2 text-secondary mt-4 text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12% this month</span>
+</div>
+</div>
+<div class="flex gap-4 relative z-10">
+<button class="px-4 py-2 rounded-md bg-surface-container-highest text-on-surface text-xs font-medium hover:bg-surface-bright transition-colors">All Items</button>
+<button class="px-4 py-2 rounded-md border border-outline-variant/30 text-on-surface-variant text-xs font-medium hover:bg-surface-container-highest transition-colors">Best Sellers</button>
+<button class="px-4 py-2 rounded-md border border-outline-variant/30 text-on-surface-variant text-xs font-medium hover:bg-surface-container-highest transition-colors">Low Stock</button>
+</div>
+<!-- Aesthetic texture -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
+</div>
+<div class="col-span-4 bg-surface-container p-8 rounded-xl flex flex-col justify-between border-l-2 border-secondary/20">
+<div>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant opacity-60 mb-1 block">Categories</span>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="px-3 py-1 bg-secondary/10 text-secondary text-[10px] uppercase font-bold tracking-tighter rounded-full border border-secondary/20">Rings</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter rounded-full">Necklaces</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter rounded-full">Bracelets</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter rounded-full">High Jewelry</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant italic opacity-40">Filter by seasonal collections and material type.</p>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container rounded-xl overflow-hidden shadow-2xl shadow-black/40">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-8 py-5 font-label text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Product</th>
+<th class="px-8 py-5 font-label text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Category</th>
+<th class="px-8 py-5 font-label text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Price</th>
+<th class="px-8 py-5 font-label text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Inventory</th>
+<th class="px-8 py-5 font-label text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Status</th>
+<th class="px-8 py-5"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright/50 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded bg-surface-container-highest overflow-hidden p-1">
+<img class="w-full h-full object-cover rounded-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="exquisite diamond engagement ring set in platinum on a dark velvet surface with dramatic spotlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM2-sKz37XMKhvnU3X2w-9Ffs9pJ605Zs6Fj1_tT9I2sOEsAVJy1oqEd2JpZlpeATlTM-nL0R82K12dyu2Kj_qLYD4R2reoWnqmpzS7DFgIzIO3kErs1-CdE9V3QpcZ5E3Ck5w9WDgXtXFDgHezx2kn98F6TKlmHwPXdlupGF27jPOD82arUmITuoV6UgjN1FkQCBlqibST4wQw4FSOAOZpiNPWblcuFRaEZjDsVEYZ6Mk5v-1ML0pQwVCV30DJ_VdjWGvPiHgrNc"/>
+</div>
+<div>
+<h4 class="text-on-surface font-semibold text-sm">Celestial Aura Ring</h4>
+<p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest mt-0.5">SKU: XEV-9902</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-on-surface-variant">Rings</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-sm font-headline text-on-surface font-bold">$12,400</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-on-surface">18 in stock</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(233,195,73,0.5)]"></span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-secondary">Active</span>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright/50 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded bg-surface-container-highest overflow-hidden p-1">
+<img class="w-full h-full object-cover rounded-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="stunning gold pendant necklace with a deep red ruby on a dark marble background with soft warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0sD_nZZv0IA050uctAlEF9Oub7gl-aVI-1p8koFp4ZDgLkKosDI1fPUuUszDX8J8yfZtQDMbvBoeu63xJlRu8NHyBlGPLanXYbxCxz1naghT417ntB-s8E1IIhFtYDWPFk8PITe69Em3NbH2T0qblRt8g1yXlA1grN2jo1Hvt6p2NAQM1bJOMoqo6xR6-3XcS91qkJ_4KjcN-KDzJ5K4Qeja9wqzFJpEQjoWYD4uQj0FxypqnTpgwOWTNH8rAavgPQ6yT1Onpu4M"/>
+</div>
+<div>
+<h4 class="text-on-surface font-semibold text-sm">Crimson Horizon Pendant</h4>
+<p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest mt-0.5">SKU: XEV-4412</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-on-surface-variant">Necklaces</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-sm font-headline text-on-surface font-bold">$8,950</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-on-surface">4 in stock</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(255,178,182,0.5)]"></span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-primary">Limited</span>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright/50 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded bg-surface-container-highest overflow-hidden p-1">
+<img class="w-full h-full object-cover rounded-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="minimalist white gold wedding band on a textured grey stone with cool morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvc2dLSdnKm7ndvoGO-pcfDnMJKqjm5Xc3AFu4oEhjRJuIN-QDeNXHHqNQh1QeyZfMJlKbLr6yVBTHNX5me3ohhwYqOnoaIL1jXGXX-dVLokLL5QOvspPr0mqjSsHAEms9s6u23GWEqAhogvghKrFa4eZW48Qlolt9Ftor_sjRJZr8REObJAaT-UbWdDye8n04--K6YmHLlLvUEZjHOpV46JogrEt0zgp8_IqZTeckfUwsKJ0CLYBRN99n7gBZqOFlVCZ1uiQdpHM"/>
+</div>
+<div>
+<h4 class="text-on-surface font-semibold text-sm">Nocturne Minimalist Band</h4>
+<p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest mt-0.5">SKU: XEV-1122</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-on-surface-variant">Rings</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-sm font-headline text-on-surface font-bold">$2,100</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-on-surface">42 in stock</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(233,195,73,0.5)]"></span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-secondary">Active</span>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright/50 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded bg-surface-container-highest overflow-hidden p-1">
+<img class="w-full h-full object-cover rounded-sm grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="luxurious diamond tennis bracelet draped over a dark wood sculpture with intimate low lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoKBu8nBhgvddopI3o9eTri_jxuc1jqG8NhJE3aVGcOhAheOeG6hzGHnxkyR09XgRE3g-HxdXpaZtIDpLFffxE9s9raUYH4G-NhQjCH43ZwvsjbDA9b4Hi9GXIPj0F4WxD5mPQkYnJGbhkE7ec9UBp9_vkWDg0P9X1iPvMSjUPY2_8uOakfqruWrVUO5d92G-Wyu6HLbAYoU6QemmMvks0MVfBNAkRitBGE1JyIDMGoun5ynVRSRdNO5-08iYyxyfasG1zP0lX9bE"/>
+</div>
+<div>
+<h4 class="text-on-surface font-semibold text-sm">Elysian Diamond Link</h4>
+<p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest mt-0.5">SKU: XEV-5509</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-on-surface-variant">Bracelets</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-sm font-headline text-on-surface font-bold">$18,700</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs text-on-surface">2 in stock</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-xs">warning</span>
+<span class="text-[10px] uppercase tracking-wider font-bold">Restock Required</span>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="bg-surface-container-lowest px-8 py-4 flex items-center justify-between border-t border-outline-variant/10">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Showing 4 of 124 products</span>
+<div class="flex gap-4">
+<button class="w-8 h-8 rounded border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded border border-secondary/30 bg-secondary/5 flex items-center justify-center text-secondary transition-colors">
+<span class="text-xs font-bold">1</span>
+</button>
+<button class="w-8 h-8 rounded border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="text-xs font-bold">2</span>
+</button>
+<button class="w-8 h-8 rounded border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB Suppression Rule Followed: No FAB on Product Management Detail/Dashboard for focused task management -->
+</body></html>

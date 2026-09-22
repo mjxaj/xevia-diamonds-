@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;700&amp;family=Manrope:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#e8bf91",
+                        "primary-container": "#382b00",
+                        "on-secondary-fixed-variant": "#5d411d",
+                        "on-tertiary": "#043639",
+                        "on-surface": "#ffd9dc",
+                        "on-tertiary-container": "#719c9f",
+                        "surface-dim": "#240c10",
+                        "surface-tint": "#e9c349",
+                        "on-tertiary-fixed-variant": "#224d50",
+                        "error": "#ffb4ab",
+                        "outline": "#a38b8c",
+                        "surface-container": "#32181b",
+                        "on-secondary-container": "#d5ae81",
+                        "secondary-fixed": "#ffddb8",
+                        "on-error": "#690005",
+                        "inverse-primary": "#735c00",
+                        "background": "#240c10",
+                        "tertiary-fixed-dim": "#a3ced2",
+                        "tertiary-container": "#003336",
+                        "secondary-fixed-dim": "#e8bf91",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#45282c",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#241a00",
+                        "on-primary": "#3c2f00",
+                        "surface-container-highest": "#4a2d30",
+                        "tertiary": "#a3ced2",
+                        "surface-variant": "#4a2d30",
+                        "secondary-container": "#5d411d",
+                        "surface-container-lowest": "#1d070b",
+                        "inverse-surface": "#ffd9dc",
+                        "on-surface-variant": "#dbc0c1",
+                        "outline-variant": "#554243",
+                        "on-primary-container": "#b39016",
+                        "primary": "#e9c349",
+                        "surface": "#240c10",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-secondary-fixed": "#2a1700",
+                        "tertiary-fixed": "#beebee",
+                        "surface-container-high": "#3e2226",
+                        "on-tertiary-fixed": "#002022",
+                        "on-secondary": "#442b09",
+                        "on-background": "#ffd9dc",
+                        "primary-fixed": "#ffe088",
+                        "surface-bright": "#4f3134",
+                        "surface-container-low": "#2d1418",
+                        "primary-fixed-dim": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(36, 12, 16, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(233, 195, 73, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-[#240c10]/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-4">
+<button class="text-[#e9c349] hover:text-[#e9c349] transition-colors duration-500">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<h1 class="text-2xl font-['Noto_Serif'] tracking-[0.3em] text-[#e9c349] uppercase">XEVIA</h1>
+<div class="flex items-center gap-6">
+<button class="text-[#ffd9dc]/70 hover:text-[#e9c349] transition-colors duration-500">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="pt-32 pb-32 px-6 md:px-16 lg:px-32 max-w-[1440px] mx-auto">
+<!-- Welcome Greeting -->
+<section class="mb-20">
+<div class="flex flex-col gap-2">
+<span class="font-label text-primary tracking-[0.2em] text-[10px] uppercase">Client Dashboard</span>
+<h2 class="font-headline text-5xl md:text-7xl font-light text-on-surface tracking-tight">Welcome back, <span class="italic text-primary text-glow">Julian</span></h2>
+<p class="text-on-surface-variant font-light max-w-lg mt-4 leading-relaxed">Your private atelier awaits. Explore your latest bespoke commissions and curated inspirations.</p>
+</div>
+</section>
+<!-- Stats / Overview (Asymmetric) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24">
+<div class="md:col-span-8 flex flex-col justify-end p-12 bg-surface-container-low min-h-[300px] relative overflow-hidden group">
+<div class="absolute inset-0 opacity-20 transition-transform duration-700 group-hover:scale-105">
+<img class="w-full h-full object-cover" data-alt="macro close-up of high-end diamond necklace on dark velvet with dramatic spotlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrxeEhJJE1PSa00vgYsEWTiepEkPf7N2nVRzPoj7XvJuU1E-b9q2VlB84YVM_lB8FeraqPD7H0a3gT9dFaOJFP2Lb6Z7e7QaYlY-04k-gkHJp9IKYfONaopPIAlJkgj5_VihvjtQ0_7kIfv8pk2RjQYK1BAoG8-zOrAs-sqqMZH6RPB0s2wjz_SfrX7RorUmkQiabpATWYd7XYOr48oybwnwdVPmSJMe_b6haF6s1P4dZMlPcVY6OFwDuuGNqarqFhL6qpQlkBMKg"/>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline text-3xl mb-4">The Aurelian Collection</h3>
+<p class="text-on-surface-variant mb-6 text-sm max-w-sm">Exclusive access to the private viewing of our latest high-jewelry heritage pieces.</p>
+<button class="bg-gradient-to-r from-primary to-primary-fixed-dim text-on-primary px-8 py-3 text-[10px] font-bold uppercase tracking-widest rounded-sm">View Invitation</button>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-8">
+<div class="p-8 bg-surface-container-highest flex-1 flex flex-col justify-between">
+<span class="font-label text-primary text-[10px] uppercase tracking-widest">Membership Status</span>
+<div>
+<div class="text-3xl font-headline mb-1">Elite Tier</div>
+<div class="text-on-surface-variant text-xs">Aesthete Curator Since 2021</div>
+</div>
+</div>
+<div class="p-8 bg-surface-container-low flex-1 flex flex-col justify-between border-l-2 border-primary/20">
+<span class="font-label text-primary text-[10px] uppercase tracking-widest">Recent Activity</span>
+<div class="text-on-surface text-sm italic">"Golden Hour" design was updated 2 hours ago.</div>
+</div>
+</div>
+</section>
+<!-- Recent Orders (No Lines) -->
+<section class="mb-24">
+<div class="flex justify-between items-end mb-12">
+<h3 class="font-headline text-3xl">Recent Orders</h3>
+<a class="font-label text-primary text-[10px] uppercase tracking-widest hover:opacity-70 transition-opacity" href="#">View All History</a>
+</div>
+<div class="space-y-8">
+<div class="flex flex-col md:flex-row items-center gap-8 p-6 bg-surface-container-lowest hover:bg-surface-container transition-colors duration-500">
+<div class="w-24 h-24 bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="luxury gold ring with emerald gemstone against a dark moody background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvA0gvOGtEzP3IeZjjMV9a_U1WjyKiqbshNAZ83ppYvkcm9bdEdRKOxeKDeYgwQX0nA38JLBsi-2sCeWdddjiwfASN9lubrNYkWgYNv5pXcXmtTdW8PLvAA5AkjBB3Kq7sBtdlYpEoT6d0lG6cxpNkaJFq5ueebxDFMyNnuOZWrCw0A0KN2QbZ5Sr_fYfNbacpNlLH7oRhg_D2DIhcHn1Uk0wNFvhOy91PtRBNdPyd2s-ZAn9GIJRyhZ928Cmf37pr0p_8OxUYEPo"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<div class="text-primary text-[10px] font-bold tracking-widest uppercase mb-1">Delivered</div>
+<div class="font-headline text-xl">The Verdant Solitaire</div>
+<div class="text-on-surface-variant text-xs mt-1">Order #XEV-9021-B • Oct 12, 2023</div>
+</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="font-headline text-xl">$14,500</div>
+<button class="text-primary text-[10px] uppercase tracking-widest flex items-center gap-2">
+                            Tracking <span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-8 p-6 bg-surface-container-lowest hover:bg-surface-container transition-colors duration-500">
+<div class="w-24 h-24 bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="delicate silver chain necklace with diamond pendant on dark silk cloth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8mYxhu2rUL41V-GVvPIfGg0bWE8sBugbDKp7Q5CqEcOzzvh-cVreBhRAUI7-mq9xR7APrJ1DdfyXIzfu27oJwGShYGJ8eKKCdSdZgP2JFFZauxaqzX4uhyldPDiquuQffq9BDtR-TRNK9uofEXWYKoCf6ZquWZ7NfRqXVjaQ1WwWtnE2yqt9EXzZvP6aP-uL5v2MFroQX-ETf-pADKLyiyRSFg7kQFUeHRV03JrtrGkbVFLDZE7IBffoHnAdKB1vOAMMqmChLr4w"/>
+</div>
+<div class="flex-grow text-center md:text-left">
+<div class="text-secondary text-[10px] font-bold tracking-widest uppercase mb-1">Processing</div>
+<div class="font-headline text-xl">Celestial Tapered Band</div>
+<div class="text-on-surface-variant text-xs mt-1">Order #XEV-8842-K • Nov 04, 2023</div>
+</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="font-headline text-xl">$8,200</div>
+<button class="text-primary text-[10px] uppercase tracking-widest flex items-center gap-2">
+                            Manage <span class="material-symbols-outlined text-sm">settings</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Saved Imagine Designs (Editorial Bento) -->
+<section class="mb-24">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="font-label text-primary text-[10px] uppercase tracking-widest">Bespoke Concepts</span>
+<h3 class="font-headline text-3xl mt-2">Saved Imagine Designs</h3>
+</div>
+<button class="flex items-center gap-2 text-primary font-label text-[10px] uppercase tracking-widest">
+                    New Studio Session <span class="material-symbols-outlined text-sm">auto_fix_high</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Bento Card 1 -->
+<div class="md:col-span-2 group relative bg-surface-container-lowest h-[400px] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" data-alt="abstract artistic 3D render of a liquid gold structure resembling a ring floating in dark space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMaIxne1k0Gh31E-G3Lx6tBkgPFbgooj6a_utEbvDX3Bk_YSBnbFO-Jf68yZVrusLfpsff5iR8YGXtZ26OkZPcViXJ4W3fS0R_g9SXBF0NlNzNW_3etopGjyil-rV0dtYisZOjKOE_gRh7Y9Qgcms501zr8zA_zAf_AyKZAJAddd10nMDUcUbPQC9FgnWrVEwpMSUbtK7hKb6AvgIutnRYYrqH9A9pkxeX3OOPfmP2Llj6AfiV2blhhsytgrfe5goSr0dR276m-UQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8">
+<div class="font-headline text-2xl text-on-surface">L’Amour Abstract</div>
+<div class="text-on-surface-variant text-[10px] uppercase tracking-[0.2em] mt-1">AI Synthesis • Last edit yesterday</div>
+</div>
+<button class="absolute top-6 right-6 w-10 h-10 rounded-full glass-panel flex items-center justify-center text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+<!-- Bento Card 2 -->
+<div class="group relative bg-surface-container-lowest overflow-hidden">
+<div class="h-full flex flex-col">
+<div class="h-2/3 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" data-alt="close up of raw uncut sapphire crystal on dark stone surface with dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0s_Us4Uoj1VimOyB1PH6rjwaCVRvOcyRmckYHW0t00G-D0ThcM81MEfjbM7n-q7rPvY48z6rkuE9XsfVm-zW_spe4DpJeR7E9BotBKXvhMbdx9WaF5AwwoXeZiPXw42GJNXEWtjgGYHIBf2nLmgsiFsNWBKzOh8HtzA82LtB4iuz3OXSw65qEHRoQC5uGXHLxzH1TI2OY5uXAy2j3HaEiRSW7ls2NJsNc8HeMPZ7Tm9WzcCsAvmprS97Y3GEV9hOUwYfUDjP93BA"/>
+</div>
+<div class="p-6 bg-surface-container-low flex-grow flex flex-col justify-between">
+<div>
+<div class="font-headline text-lg">Deep Sea Concept</div>
+<div class="text-on-surface-variant text-[10px] uppercase tracking-widest mt-1">Raw Mineral Infusion</div>
+</div>
+<span class="material-symbols-outlined text-primary self-end">arrow_right_alt</span>
+</div>
+</div>
+</div>
+<!-- Bento Card 3 -->
+<div class="group relative bg-surface-container-lowest overflow-hidden h-[300px]">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:rotate-2 group-hover:scale-110" data-alt="minimalist white gold earring design in a futuristic glass box presentation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkxsnWMABtTYJ7M_eiT8DopSY_9mM54Tdiaw50m8BmT1o5ztITjG3wwShaWPY4tf1rTSVR1thNd6Ypq0OAgBptTtS9AgenlT73KDfz5RegUGc7koVrmJSap40vTUcBN1tK2hxAn_-mO_7Cy839Cp7DoqkT1pO8ecSmtG4GbhR4usYvEz_kVPYeZ4RpyhzUl5T1916QGFLevEoTLxO6RLFAYYG5eiM6q2Zps_cbnYIGFhb4_TX5FHVFN2d0ZWlF9r2ux5Letq7DZh8"/>
+<div class="absolute inset-0 glass-panel opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="text-[10px] font-bold text-primary uppercase tracking-widest border border-primary/40 px-4 py-2">Continue Designing</div>
+</div>
+</div>
+<!-- Bento Card 4 -->
+<div class="md:col-span-2 group relative bg-surface-container-low h-[300px] flex items-center p-12 overflow-hidden">
+<div class="relative z-10 max-w-sm">
+<div class="font-headline text-3xl leading-snug">The "Midnight Sun" Bespoke Series</div>
+<p class="text-on-surface-variant text-sm mt-4 italic">Collaborate with our master jewelers to turn your saved designs into physical masterpieces.</p>
+<button class="mt-8 text-primary text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-4">
+                            Start Consultation <span class="w-12 h-[1px] bg-primary"></span>
+</button>
+</div>
+<div class="absolute right-[-10%] top-[-10%] w-64 h-64 border border-primary/10 rounded-full flex items-center justify-center">
+<div class="w-48 h-48 border border-primary/5 rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Wishlist / Profile Cluster -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-24">
+<!-- Wishlist -->
+<div class="lg:col-span-2">
+<div class="flex justify-between items-end mb-8">
+<h3 class="font-headline text-3xl">Curated Wishlist</h3>
+<span class="text-on-surface-variant text-[10px] uppercase tracking-widest">3 Pieces</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-outline-variant/10">
+<div class="bg-background p-4 group">
+<div class="relative aspect-square overflow-hidden bg-surface-container-lowest mb-4">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" data-alt="luxury rose gold watch on a minimal grey pedestal with soft directional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr73IK6ioWm1shG7lGHopL7crFkriJs5QPsoGPJOdk3x1dji6Nq2fBbhac8giJwNzZuMCxqjYRoHsHNnsbpYV7vS-htb5WdI6OWqrOKhCHx_yEmbATs-45_YRSBwLM5qCj9rpKyoiqU_v7zygSQwNgNgNP00ImfpksnSOypPT5URamBGtKYlCYN3eohapEqfIqUvlY32uFE7ibY4K1i5slSA4rAmo2qKgSYb3cHqsJuhDiHZPDOasfikk_ePq3I6PyT7zZFmX3pWA"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<div class="font-headline text-sm">Chronos Rose Gold</div>
+<div class="text-primary text-[10px] mt-1">$22,000</div>
+</div>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-error transition-colors">favorite</span>
+</div>
+</div>
+<div class="bg-background p-4 group">
+<div class="relative aspect-square overflow-hidden bg-surface-container-lowest mb-4">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" data-alt="stunning gold earrings with hanging pearls against a textured dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjXXwWnH0TMlzsp3VmWys1qvwfWmpe8lXZEXROksdueYjLSUVd_d6YDw9qIZpUlLqgWW6Cg_mviw8z5zGplW_UKThTTGsC0k799v0FMF4xUrAZBfMKt4Bbdl6EbEXySMa6AP_sm7Njp_Hjacp2lFPpdMXah2NAxJ7bx7WMblGZmcPZ8J3AcSonoOykrqVLLlak2Lp3kgMsqFRn9kuiXScrZpbHy3DYLk7WqjnJGqY40f6mqObLVVhk7Dpx2RIDy5fQKyKj6ALxS-I"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<div class="font-headline text-sm">Ocean Tear Drop</div>
+<div class="text-primary text-[10px] mt-1">$4,900</div>
+</div>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-error transition-colors">favorite</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Profile Settings -->
+<div>
+<h3 class="font-headline text-3xl mb-8">Profile</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-6 p-4 bg-surface-container-low">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-primary/20 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-primary text-3xl">person</span>
+</div>
+<div>
+<div class="font-headline text-lg">Julian Vance</div>
+<div class="text-on-surface-variant text-[10px] uppercase tracking-widest">Security: High</div>
+</div>
+</div>
+<ul class="space-y-2">
+<li>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container transition-colors text-sm text-on-surface-variant">
+<span>Shipping Addresses</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container transition-colors text-sm text-on-surface-variant">
+<span>Payment Methods</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container transition-colors text-sm text-on-surface-variant">
+<span>Notification Preferences</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</li>
+<li class="pt-4">
+<button class="w-full flex items-center gap-3 p-4 text-error text-[10px] font-bold uppercase tracking-widest hover:bg-error/5 transition-colors">
+<span class="material-symbols-outlined text-sm">logout</span> Sign Out
+                            </button>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<!-- NavigationDrawer (Hidden by default, semantic structure included) -->
+<aside class="fixed inset-y-0 left-0 z-50 w-80 glass-panel border-r border-outline-variant/10 hidden">
+<div class="flex flex-col p-12 space-y-12">
+<h4 class="text-[#e9c349] uppercase font-['Noto_Serif'] font-light tracking-wide">THE COLLECTIONS</h4>
+<nav class="space-y-8">
+<a class="flex items-center gap-4 text-[#e9c349] italic pl-4 border-l border-[#e9c349]/30 font-['Noto_Serif'] font-light tracking-wide" href="#">
+<span class="material-symbols-outlined">star</span> High Jewelry
+                </a>
+<a class="flex items-center gap-4 text-[#ffd9dc]/80 pl-4 hover:bg-[#2d1216] transition-all duration-300 font-['Noto_Serif'] font-light tracking-wide" href="#">
+<span class="material-symbols-outlined">edit_note</span> Bespoke Service
+                </a>
+<a class="flex items-center gap-4 text-[#ffd9dc]/80 pl-4 hover:bg-[#2d1216] transition-all duration-300 font-['Noto_Serif'] font-light tracking-wide" href="#">
+<span class="material-symbols-outlined">history_edu</span> Heritage
+                </a>
+<a class="flex items-center gap-4 text-[#ffd9dc]/80 pl-4 hover:bg-[#2d1216] transition-all duration-300 font-['Noto_Serif'] font-light tracking-wide" href="#">
+<span class="material-symbols-outlined">visibility</span> Private Viewing
+                </a>
+</nav>
+</div>
+</aside>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#240c10]/90 backdrop-blur-2xl shadow-[0_-10px_40px_rgba(36,12,16,0.8)] bg-gradient-to-t from-[#2d1216] to-transparent">
+<a class="flex flex-col items-center justify-center text-[#ffd9dc]/40 hover:text-[#e9c349]" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Atelier</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#ffd9dc]/40 hover:text-[#e9c349]" href="#">
+<span class="material-symbols-outlined">diamond</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Gallery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#ffd9dc]/40 hover:text-[#e9c349]" href="#">
+<span class="material-symbols-outlined">temp_preferences_custom</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Imagine</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#ffd9dc]/40 hover:text-[#e9c349]" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e9c349] scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

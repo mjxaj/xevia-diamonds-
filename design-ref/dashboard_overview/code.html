@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#9b414a",
+                    "primary-fixed": "#ffdadb",
+                    "secondary-fixed-dim": "#e9c349",
+                    "secondary-fixed": "#ffe088",
+                    "secondary": "#e9c349",
+                    "secondary-container": "#af8d11",
+                    "surface-container-low": "#1b1b1b",
+                    "outline": "#a38b8c",
+                    "on-error": "#690005",
+                    "surface-bright": "#393939",
+                    "on-secondary": "#3c2f00",
+                    "on-secondary-fixed-variant": "#574500",
+                    "surface-container-lowest": "#0e0e0e",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#353535",
+                    "error": "#ffb4ab",
+                    "on-primary": "#5f131f",
+                    "tertiary": "#c6c6c7",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-tertiary": "#2f3131",
+                    "inverse-on-surface": "#303030",
+                    "primary": "#ffb2b6",
+                    "surface-tint": "#ffb2b6",
+                    "on-secondary-container": "#342800",
+                    "primary-container": "#5a0f1c",
+                    "on-primary-fixed": "#40000d",
+                    "surface-dim": "#131313",
+                    "outline-variant": "#554243",
+                    "background": "#131313",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-container": "#2b2d2d",
+                    "surface-container": "#1f1f1f",
+                    "on-background": "#e2e2e2",
+                    "on-primary-container": "#de757d",
+                    "on-secondary-fixed": "#241a00",
+                    "on-surface": "#e2e2e2",
+                    "on-tertiary-container": "#939494",
+                    "on-primary-fixed-variant": "#7d2a34",
+                    "surface": "#131313",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-surface-variant": "#dbc0c1",
+                    "inverse-surface": "#e2e2e2",
+                    "primary-fixed-dim": "#ffb2b6",
+                    "surface-variant": "#353535"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131313; }
+        ::-webkit-scrollbar-thumb { background: #353535; }
+        .tonal-layering { box-shadow: 0 40px -5px rgba(255, 218, 219, 0.08); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-primary">
+<!-- NavigationDrawer (Shared Component) -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col overflow-y-auto px-6 py-8 bg-[#1B1B1B] border-none z-40">
+<div class="mb-12">
+<h1 class="text-2xl font-['Noto_Serif'] font-black tracking-tighter text-[#FFB2B6]">XEVIA</h1>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="border-l-2 border-[#E9C349] text-[#E9C349] font-semibold bg-transparent pl-4 py-3 transition-all duration-300 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Noto_Serif'] font-bold tracking-widest uppercase text-sm">Overview</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 hover:bg-[#393939] rounded-sm transition-all duration-300 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+<span class="font-['Noto_Serif'] font-bold tracking-widest uppercase text-sm">Products</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 hover:bg-[#393939] rounded-sm transition-all duration-300 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-['Noto_Serif'] font-bold tracking-widest uppercase text-sm">Orders</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 hover:bg-[#393939] rounded-sm transition-all duration-300 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-['Noto_Serif'] font-bold tracking-widest uppercase text-sm">Customers</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 hover:bg-[#393939] rounded-sm transition-all duration-300 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Noto_Serif'] font-bold tracking-widest uppercase text-sm">Xevia Imagine</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 hover:bg-[#393939] rounded-sm transition-all duration-300 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-['Noto_Serif'] font-bold tracking-widest uppercase text-sm">Content</span>
+</a>
+<a class="text-[#E2E2E2] opacity-70 font-['Inter'] pl-4 py-3 hover:text-[#E2E2E2] hover:opacity-100 hover:bg-[#393939] rounded-sm transition-all duration-300 flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-['Noto_Serif'] font-bold tracking-widest uppercase text-sm">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto pt-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 px-4">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-primary text-xs font-bold">JD</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Julian De Ville</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Creative Director</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-18rem)] z-30 bg-[#131313]/80 backdrop-blur-xl flex justify-between items-center px-12 py-6 ml-72">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#FFB2B6] cursor-pointer hover:text-[#E9C349] transition-colors" data-icon="search">search</span>
+<h2 class="font-['Noto_Serif'] text-lg font-medium tracking-tight text-[#FFB2B6]">Dashboard Overview</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex flex-col items-end mr-2">
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold">System Status</span>
+<span class="text-[10px] text-green-400 flex items-center gap-1">Live <span class="w-1 h-1 rounded-full bg-green-400 animate-pulse"></span></span>
+</div>
+<img alt="Admin Profile" class="w-10 h-10 rounded-full border border-secondary/20 object-cover" data-alt="close-up portrait of a sophisticated man with a groomed beard in a dark studio setting with warm rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA8UXdokgebHCfo3hfmPWD5p6niWse1AUv1Gvu5zSGMTdZe2zlB0XUDeCbHiqylMhuRJhlXMlrtugxVG3eglX3hDhSb8MOUUXOUtMPH3UsNT4LHIhNp4GsjcPVO1E79ze2M729pjb515yy9MKxh8As0EWjSm-yvu08th--jI8qlqY9ojkskBPIRPtOFRxp6xoQDHses-LzF1js9hBpt6_z2j1spfN3ApQ5Njg1dAiFcfvd4bi26yaeYPKJNfWkuWSsP9vbZzs5uDU"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-72 pt-28 px-12 pb-12 bg-surface">
+<!-- Hero Section: High KPI Tension -->
+<section class="grid grid-cols-12 gap-6 mb-12">
+<div class="col-span-12 lg:col-span-8 flex flex-col justify-end">
+<h3 class="text-on-surface-variant text-xs uppercase tracking-[0.3em] font-bold mb-2">Performance Summary</h3>
+<h1 class="font-headline text-6xl lg:text-8xl font-black text-on-surface tracking-tighter leading-none mb-6">
+                    $124.5<span class="text-secondary">k</span>
+</h1>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-primary-container/30 border border-primary/20 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-semibold text-primary">+12.4% vs last month</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-highest rounded-full">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-xs font-semibold text-on-surface">342 Orders</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between border-l-4 border-secondary tonal-layering">
+<div>
+<span class="text-[10px] uppercase tracking-widest text-secondary font-bold mb-4 block">Atelier Insight</span>
+<p class="font-headline text-xl text-on-surface leading-relaxed italic">
+                        "Elegance is not being noticed, it's being remembered."
+                    </p>
+</div>
+<div class="mt-8">
+<p class="text-xs text-on-surface-variant leading-loose">
+                        Your highest engagement this week is coming from the <strong>Obsidian Collection</strong>. Consider featuring the Nocturne Ring in the upcoming newsletter.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Revenue Graph (Editorial Layout) -->
+<section class="grid grid-cols-12 gap-6 mb-12">
+<div class="col-span-12 bg-surface-container rounded-xl p-8 tonal-layering">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h4 class="font-headline text-2xl text-on-surface">Revenue Velocity</h4>
+<p class="text-sm text-on-surface-variant">Daily transaction volume for September 2023</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-highest text-xs font-bold uppercase tracking-widest text-on-surface rounded hover:bg-surface-bright transition-colors">Daily</button>
+<button class="px-4 py-2 bg-primary-container text-xs font-bold uppercase tracking-widest text-primary rounded transition-colors">Monthly</button>
+</div>
+</div>
+<!-- Mock Line Chart via SVG -->
+<div class="relative w-full h-[300px] mt-8 group">
+<svg class="w-full h-full preserve-3d" viewbox="0 0 1000 300">
+<!-- Grid Lines -->
+<line class="text-outline-variant opacity-5" stroke="currentColor" x1="0" x2="1000" y1="50" y2="50"></line>
+<line class="text-outline-variant opacity-5" stroke="currentColor" x1="0" x2="1000" y1="150" y2="150"></line>
+<line class="text-outline-variant opacity-5" stroke="currentColor" x1="0" x2="1000" y1="250" y2="250"></line>
+<!-- Area Fill Gradient -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#FFB2B6" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#FFB2B6" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,280 L50,260 L150,220 L250,240 L350,180 L450,140 L550,160 L650,80 L750,100 L850,40 L1000,60 L1000,300 L0,300 Z" fill="url(#chartGradient)"></path>
+<!-- Main Line -->
+<path d="M0,280 L50,260 L150,220 L250,240 L350,180 L450,140 L550,160 L650,80 L750,100 L850,40 L1000,60" fill="none" stroke="#E9C349" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Data Points -->
+<circle class="animate-pulse" cx="850" cy="40" fill="#E9C349" r="6"></circle>
+</svg>
+<!-- Chart Labels -->
+<div class="absolute bottom-0 left-0 w-full flex justify-between pt-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">
+<span>Sept 01</span>
+<span>Sept 08</span>
+<span>Sept 15</span>
+<span>Sept 22</span>
+<span>Sept 30</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Products & Customer Insights (Bento Style) -->
+<section class="grid grid-cols-12 gap-6">
+<!-- Top Products List -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-high rounded-xl overflow-hidden tonal-layering">
+<div class="p-8 border-b border-outline-variant/10 flex justify-between items-center">
+<h4 class="font-headline text-xl text-on-surface">Premier Collections</h4>
+<span class="text-xs uppercase tracking-widest text-secondary cursor-pointer hover:underline">View All Inventory</span>
+</div>
+<div class="p-4">
+<div class="space-y-2">
+<!-- Product Item -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-bright transition-all duration-300 rounded-lg group">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded overflow-hidden bg-surface-container-lowest">
+<img alt="Jewelry Piece" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Macro close-up of a platinum diamond ring on a black velvet cushion with sparkling light refractions" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRPEjHbku73w9AxY0GPyGX1kopBLLSxnux8G5SAFzq2vhXwQDcUrb8xM7vxWftyy6EJzj_860_dZ67BeWC6KLbsA5LF5PWzsTKZBf2v0foFBdBd4hXVldNeJIz5aUkliT5gc7wBkdTsUMfGnLk9srrHjtst0Vw-AefRVzLO5X3DTelCBViBd6Jv4L9-jp110k8q2I_Tl-soP3-TZA9DDMFEt1EPKU--yhL-isA7rlKkInIbK-T8tOBCwiOwzN1pJVma-FYU32AP3Q"/>
+</div>
+<div>
+<h5 class="text-sm font-semibold text-on-surface">Celestial Diamond Ring</h5>
+<span class="text-[10px] uppercase tracking-wider text-on-surface-variant">18k White Gold • 2.5 Carat</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">$12,400</p>
+<p class="text-[10px] text-primary">24 Units Sold</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-bright transition-all duration-300 rounded-lg group">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded overflow-hidden bg-surface-container-lowest">
+<img alt="Jewelry Piece" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Elegant sapphire pendant necklace draped over a dark grey stone sculpture with dramatic chiaroscuro lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjH5Y0hRWh755Z07WZtELpz0MXjIbGRXQxsnMZyey-_h1b16p6AJ0L-rWO2YuH9ktww3o_v6gAUejKMF7W1GdsqvK0JHk0U7iL4tcKVv73vMKnXf51pQ3VWhSjuY5ca_MtqMEEuPZTQW46T6I77f6CVbIpE0GsQgGjSfo-hyGsQLRN0jaicIxoP5XEPTnHJphZqUVswnNSp9fFnYf9qPMW1HMzCeym09H9hKDa_la8TGEX8cHziLRAKkvN5bMg1z7l-lMcm3FqbnU"/>
+</div>
+<div>
+<h5 class="text-sm font-semibold text-on-surface">Deep Sea Sapphire Pendant</h5>
+<span class="text-[10px] uppercase tracking-wider text-on-surface-variant">Royal Blue • Platinum Chain</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">$8,900</p>
+<p class="text-[10px] text-primary">18 Units Sold</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-bright transition-all duration-300 rounded-lg group">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded overflow-hidden bg-surface-container-lowest">
+<img alt="Jewelry Piece" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Pair of gold hoop earrings with intricate floral engravings on a polished dark wood surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW8wPDgpukZPnHoIicHJQgSwS1VzzO4PxkoQZX4wtL4p3XHCrPCIngNSHv00_s6AEGcz34EKr2c40BmgQn7Nm2m3ZFc9hCNHmNq-0WogOgGIG_6NSggUeDX6WuKMSegEB0CGZBDxKe2e8wpZpz5BbmKw5ZHgkcwC2Cec10JSn00vHxBB8pcjVSvIBlqgTLl7HeI2g918D6W3-P93532UYE1RN6al5QgTXp-B-vrJYitZcDO74Rg4K9ATekvLhOF_-eXAJmNiDhtUE"/>
+</div>
+<div>
+<h5 class="text-sm font-semibold text-on-surface">Etruscan Gold Hoops</h5>
+<span class="text-[10px] uppercase tracking-wider text-on-surface-variant">22k Yellow Gold • Hand-engraved</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">$4,200</p>
+<p class="text-[10px] text-primary">31 Units Sold</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Bento Grid -->
+<div class="col-span-12 lg:col-span-5 grid grid-rows-2 gap-6">
+<!-- Customer Tier Card -->
+<div class="bg-primary-container/20 rounded-xl p-8 border border-primary/10 tonal-layering relative overflow-hidden group">
+<div class="relative z-10">
+<span class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-4 block">Vip Retention</span>
+<div class="flex items-end gap-4 mb-4">
+<span class="font-headline text-5xl text-on-surface">82%</span>
+<span class="material-symbols-outlined text-primary mb-2" data-icon="auto_fix_high">auto_fix_high</span>
+</div>
+<p class="text-sm text-on-surface-variant max-w-[200px]">
+                            High-net-worth clients from the "Private Reserve" tier have increased by 14% this quarter.
+                        </p>
+</div>
+<!-- Abstract Background Shape -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500"></div>
+</div>
+<!-- Global Distribution Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 tonal-layering flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold mb-4 block">Regional Sales</span>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold text-on-surface w-20">Paris</span>
+<div class="w-32 h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[85%]"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold text-on-surface w-20">New York</span>
+<div class="w-32 h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[62%]"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold text-on-surface w-20">Tokyo</span>
+<div class="w-32 h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[45%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-24 h-24 rounded-full border-4 border-surface-container-highest border-t-secondary rotate-45 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="public">public</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB (Suppressed on Dashboard per logic, but included if primary action needed) -->
+<!-- Not rendered as per suppression rule for Dashboard/Overview screens unless explicitly aligned -->
+</body></html>

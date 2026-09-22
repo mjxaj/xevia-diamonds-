@@ -71,22 +71,6 @@ router.get('/products/:slug', (req, res, next) => {
   res.render('product.njk', { title: product.name, product, related });
 });
 
-router.get('/portfolio', (req, res) => {
-  const designs = [];
-  for (let i = 1; i <= 15; i++) {
-    designs.push({
-      index: i,
-      image: `/images/products/design-${i}-1.jpg`,
-      lifestyle: `/images/products/design-${i}-3.jpg`,
-    });
-  }
-  res.render('portfolio.njk', {
-    title: 'Portfolio',
-    designs,
-    pdf_url: '/portfolio.pdf',
-  });
-});
-
 router.get('/imagine', (req, res) => {
   res.render('imagine.njk', { title: 'Xevia Imagine' });
 });

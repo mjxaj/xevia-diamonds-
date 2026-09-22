@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,300&amp;family=Manrope:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#e8bf91",
+                    "primary-container": "#382b00",
+                    "on-secondary-fixed-variant": "#5d411d",
+                    "on-tertiary": "#043639",
+                    "on-surface": "#ffd9dc",
+                    "on-tertiary-container": "#719c9f",
+                    "surface-dim": "#240c10",
+                    "surface-tint": "#e9c349",
+                    "on-tertiary-fixed-variant": "#224d50",
+                    "error": "#ffb4ab",
+                    "outline": "#a38b8c",
+                    "surface-container": "#32181b",
+                    "on-secondary-container": "#d5ae81",
+                    "secondary-fixed": "#ffddb8",
+                    "on-error": "#690005",
+                    "inverse-primary": "#735c00",
+                    "background": "#240c10",
+                    "tertiary-fixed-dim": "#a3ced2",
+                    "tertiary-container": "#003336",
+                    "secondary-fixed-dim": "#e8bf91",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#45282c",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#241a00",
+                    "on-primary": "#3c2f00",
+                    "surface-container-highest": "#4a2d30",
+                    "tertiary": "#a3ced2",
+                    "surface-variant": "#4a2d30",
+                    "secondary-container": "#5d411d",
+                    "surface-container-lowest": "#1d070b",
+                    "inverse-surface": "#ffd9dc",
+                    "on-surface-variant": "#dbc0c1",
+                    "outline-variant": "#554243",
+                    "on-primary-container": "#b39016",
+                    "primary": "#e9c349",
+                    "surface": "#240c10",
+                    "on-primary-fixed-variant": "#574500",
+                    "on-secondary-fixed": "#2a1700",
+                    "tertiary-fixed": "#beebee",
+                    "surface-container-high": "#3e2226",
+                    "on-tertiary-fixed": "#002022",
+                    "on-secondary": "#442b09",
+                    "on-background": "#ffd9dc",
+                    "primary-fixed": "#ffe088",
+                    "surface-bright": "#4f3134",
+                    "surface-container-low": "#2d1418",
+                    "primary-fixed-dim": "#e9c349"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .luxury-gradient-gold {
+            background: linear-gradient(135deg, #e9c349 0%, #b39016 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(233, 195, 73, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-[#240c10]/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#e9c349] cursor-pointer">menu</span>
+</div>
+<div class="text-2xl font-['Noto_Serif'] tracking-[0.3em] text-[#e9c349] uppercase">XEVIA</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#e9c349] cursor-pointer">shopping_bag</span>
+</div>
+</nav>
+<main class="pt-20 pb-32">
+<!-- Hero Section: Atelier Gallery -->
+<section class="relative w-full px-6 md:px-16 py-12 flex flex-col md:flex-row gap-8">
+<!-- Left: Image Gallery Asymmetric Grid -->
+<div class="w-full md:w-3/5 grid grid-cols-12 gap-4">
+<div class="col-span-12 md:col-span-8 aspect-[4/5] bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="Close-up of a high jewelry diamond ring resting on a deep maroon velvet cushion with soft golden ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7-u58d77IcU3Lauz0p-Nibfs8m-q2pTEr84uuznTr59GNILlcrMkB_VrJH2bsQkrj8o7fnCuI6pbfz0ckI26gAxfMZAdyZqC0wGClHXbidgXEoja6Bu66FScqakOvnD1R0YlhfNFOswAkbhATLtTtrnEkRD38W5DqPmZnmYAv2xmRMgy0caGBKiFydPK498faeGmn-SJvixjlGCFK2cYJ-IIMexrWmWxqr3TMXl2W-cPaTsZXFW2-dPdY_KX_o1l1q5Uw7y9D2zc"/>
+</div>
+<div class="hidden md:flex col-span-4 flex-col gap-4">
+<div class="aspect-square bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500" data-alt="Artisanal jeweler hands working with fine gold wire and precious stones in a dimly lit heritage workshop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx1YDd-Y5L8sHSPSVlBLASfWXJos7s7hw5gepHycC2WDrl4AGdhSDhsIz2tpirLiYNB3QHgQuG003kzm-7cx7wwniU17gkD5d8iLOIIDxZ7HuAly2DElL9Uo8EqYj2nSFx_zueWR0MQdPGOGOOkaaWKZHL8ChEqxX9PpFqlSkoicIlO5tv99jrRDdNSSyAi3mjDbizQg6kWjehPgm1A1l1SxOj7is13-e7SMMAssSx9PhZoiPnsY7zI4ckAaybW5XwLI1MxouWedI"/>
+</div>
+<div class="aspect-square bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Detailed macro shot of 18k rose gold texture and intricate engravings on a luxury piece of jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNJBU7yiwPOAvWfJcnkZ3PlZ5FrD0WOUDxdce3mj5gHAgzWZm5Bx8IX4priTi5bTqW5RaAqYwARJ8mvzUXrTDXGPKUSKAOYGOJumtf3QwTvm6Hjdd0syYrK9l2dx4zPBRve3UJKfGW-4Xj3AdSG-exQoinaEJnt5ldYwEOM23e4IRh_9uj8NrqsG1_soYPyQVHl-wMUGqCClCOC6yaGCgckBDV1fbBnt3Ap7NbAGThJ5C7hwP2GjGn-vghsXi_tcG2ZLgk2WgwRsU"/>
+</div>
+</div>
+</div>
+<!-- Right: Product Information Shell -->
+<div class="w-full md:w-2/5 md:sticky md:top-32 h-fit space-y-10">
+<div class="space-y-4">
+<span class="font-label text-[10px] tracking-[0.2em] text-primary/70 uppercase">High Jewelry • Atelier Collection</span>
+<h1 class="font-headline text-5xl md:text-6xl text-on-surface leading-tight font-light">Aurelia Nocturne</h1>
+<p class="text-on-surface-variant font-light leading-relaxed max-w-sm">
+                        Inspired by the celestial dance of moonlight on the Tiber, the Aurelia Nocturne is hand-forged in our heritage atelier.
+                    </p>
+</div>
+<!-- Specs -->
+<div class="space-y-8 pt-4">
+<div class="flex items-end gap-3">
+<span class="font-headline text-4xl text-primary">$12,400</span>
+<span class="font-label text-sm text-on-surface/40 mb-1">Tax Included</span>
+</div>
+<!-- Material Selector -->
+<div class="space-y-4">
+<label class="font-label text-[10px] tracking-widest text-on-surface/50 uppercase">Material</label>
+<div class="flex gap-4">
+<button class="px-4 py-2 border border-primary text-primary text-xs tracking-widest uppercase bg-primary/5">18k Rose Gold</button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface/60 text-xs tracking-widest uppercase hover:bg-surface-container transition-colors">Platinum</button>
+</div>
+</div>
+<!-- Size Selector -->
+<div class="space-y-4">
+<div class="flex justify-between max-w-xs">
+<label class="font-label text-[10px] tracking-widest text-on-surface/50 uppercase">Size</label>
+<span class="text-[10px] text-primary underline cursor-pointer tracking-wider">Size Guide</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="w-10 h-10 flex items-center justify-center text-xs font-bold border border-outline-variant hover:border-primary transition-all">48</button>
+<button class="w-10 h-10 flex items-center justify-center text-xs font-bold border border-outline-variant hover:border-primary transition-all">50</button>
+<button class="w-10 h-10 flex items-center justify-center text-xs font-bold border border-primary bg-primary text-on-primary">52</button>
+<button class="w-10 h-10 flex items-center justify-center text-xs font-bold border border-outline-variant hover:border-primary transition-all">54</button>
+<button class="w-10 h-10 flex items-center justify-center text-xs font-bold border border-outline-variant hover:border-primary transition-all">56</button>
+</div>
+</div>
+</div>
+<!-- CTAs -->
+<div class="flex flex-col gap-4 pt-6">
+<button class="w-full h-16 luxury-gradient-gold text-on-primary font-label font-extrabold text-[12px] uppercase tracking-[0.2em] shadow-lg hover:brightness-110 transition-all active:scale-[0.98]">
+                        Buy Now
+                    </button>
+<button class="w-full h-16 border border-outline-variant text-on-surface font-label font-bold text-[12px] uppercase tracking-[0.2em] hover:bg-surface-container transition-all">
+                        Add to Cart
+                    </button>
+<button class="w-full flex items-center justify-center gap-2 py-4 text-primary font-label text-[10px] uppercase tracking-widest hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+                        Request Customization
+                    </button>
+</div>
+</div>
+</section>
+<!-- Product Details / Narrative -->
+<section class="mt-32 px-6 md:px-16 border-t border-outline-variant/10 pt-24">
+<div class="grid md:grid-cols-2 gap-20 items-center">
+<div class="order-2 md:order-1">
+<img class="w-full aspect-[16/9] object-cover" data-alt="Atmospheric shot of a luxury boutique interior with dark wood panels and spotlighting on jewelry display cases" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEbUmUwiDonUSA8XZ2tqQN5ipM_3sztcegGukgdYeTP5cV3SmdCaOy54UIC_6d_lBr3dfneeSqo1XyjXNwJ4tIaA5klESIlwnchyuWWW20InnxhZEDazS8tqVb7NhcSDjshlnFj5uTd7GJxgdg05PTE8ywLkLYpiiH1Cb1UIIisqVJOiJO25vNc6S1_2IDnkwLZknLdwVBgCKDaQ1Xgdu4NiMQd-m8WlJlynklraYW2sppnp51iRal_w7xEBoqp2fds_5h2YQG16Q"/>
+</div>
+<div class="space-y-8 order-1 md:order-2">
+<h2 class="font-headline text-4xl text-on-surface">The Craftsmanship</h2>
+<div class="space-y-6 text-on-surface-variant font-light leading-relaxed">
+<p>Each XEVIA creation is a testament to time. Our artisans spend over 120 hours on the Aurelia setting alone, ensuring each pavé diamond captures the light from every conceivable angle.</p>
+<p>Responsibly sourced from our partner mines in Southern Africa, we ensure that the beauty of our pieces is matched only by the integrity of their origin.</p>
+</div>
+<ul class="space-y-4 pt-4">
+<li class="flex items-center gap-4 text-xs tracking-widest uppercase text-on-surface/70">
+<span class="w-8 h-px bg-primary/40"></span>
+                            Hand-set VVS1 Diamonds
+                        </li>
+<li class="flex items-center gap-4 text-xs tracking-widest uppercase text-on-surface/70">
+<span class="w-8 h-px bg-primary/40"></span>
+                            Recycled 18k Rose Gold
+                        </li>
+<li class="flex items-center gap-4 text-xs tracking-widest uppercase text-on-surface/70">
+<span class="w-8 h-px bg-primary/40"></span>
+                            Lifetime Warranty &amp; Care
+                        </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Complete the Look (Cross-sell) -->
+<section class="mt-40 px-6 md:px-16">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="font-label text-[10px] tracking-[0.2em] text-primary/70 uppercase">Curated Pairings</span>
+<h2 class="font-headline text-3xl text-on-surface mt-2">Complete the Look</h2>
+</div>
+<a class="text-[10px] tracking-[0.2em] uppercase text-on-surface/50 hover:text-primary transition-colors" href="#">View All Sets</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Item 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="Luxury rose gold earrings with drop diamonds against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-oqWnrrplELmvB_-6FfAwdcEYs-dZhAHIi8-665f0OeaDvnyCwiz7SvKIDi8dBaj6rDLZF9Drn4wF7mDz29gUG0NT2YvqGr_4oSu7RybGaj4vWveDAiuMiA4ZPGjO2va2MLOJzMQjoiu2NkWUBXhg-51hb32_HmKtiAhIYQSe_6kTrGR42iVJkq8Z3ANU8t_KYJnrXEB2RXXzQs8cdUY1WMT_9wUw3uLfO9BgMdTcvA9j-E4itJqlZn28OVYIkSw--pjU_KQhlCQ"/>
+<div class="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="mt-6 space-y-2">
+<h3 class="font-headline text-lg text-on-surface">Aurelia Drop Earrings</h3>
+<p class="text-primary font-label text-sm">$8,200</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="Delicate rose gold bracelet with diamond accents displayed on a dark marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4TjUXI2XfIVuG71XMT98YigQVetZ4alRjiAXPsgKxUbw3pItAFBcOWvilKhK26ut8O2ecBED9FUSkWS9pFx9d6Vtooqjbw0_5VmMJCpGxhq4HKO5CckqVGhubkqW2sLyw_jP2H4nFP34amEC6BDN5hJI_yLJXVTW2wb38B6AMeZlQn5-6eU79PVvL8nolO5Nm-g6PUdvwrxj8JKH1hMXmmHMvrtRk3IAc63co0_BN2zYXrf8f_3m6L-rnZ8v8jJSgoK6jJpO7IQI"/>
+<div class="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="mt-6 space-y-2">
+<h3 class="font-headline text-lg text-on-surface">Nocturne Tennis Bracelet</h3>
+<p class="text-primary font-label text-sm">$15,600</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="Modern geometric rose gold pendant necklace with a large central diamond" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTo9gZZmxf2eyqcVjV_VILCfcjL7LkmVyhFGmArHVgGfg1YVtbMHRtW7heROb93z05EQVUvwIr84wppxJzoBy7RDVqX_SfVIrLmjFc8veR3eE3CRMAQicu7lpJly8aC77GcDtwF1i062TVYcFjv_GNDmo4fcZ_YmlrI2B8ZDa1ALR8B5gG_f4EtB5MjcLWka0ZvZiVNRnuStLwgdPmi3Dwff7_itgtzlri1025ni3gUfn0D1SqL1zMEvO5o_5qzHG1xWhTRLM_pMc"/>
+<div class="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="mt-6 space-y-2">
+<h3 class="font-headline text-lg text-on-surface">Celestial Pendant</h3>
+<p class="text-primary font-label text-sm">$6,900</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#240c10]/90 backdrop-blur-2xl shadow-[0_-10px_40px_rgba(36,12,16,0.8)] bg-gradient-to-t from-[#2d1216] to-transparent">
+<div class="flex flex-col items-center justify-center text-[#ffd9dc]/40 group hover:text-[#e9c349]">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Atelier</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#ffd9dc]/40 group hover:text-[#e9c349]">
+<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Gallery</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#ffd9dc]/40 group hover:text-[#e9c349]">
+<span class="material-symbols-outlined" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Imagine</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#ffd9dc]/40 group hover:text-[#e9c349]">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#ffd9dc]/40 group hover:text-[#e9c349]">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+<!-- Footer for Desktop -->
+<footer class="hidden md:block py-20 px-16 bg-surface-container-lowest border-t border-outline-variant/5">
+<div class="grid grid-cols-4 gap-12">
+<div class="space-y-6">
+<div class="text-xl font-headline tracking-[0.3em] text-primary uppercase">XEVIA</div>
+<p class="text-on-surface/40 text-xs leading-loose font-light">Elegance is the only beauty that never fades. XEVIA brings you timeless jewelry crafted by masters of the old world.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-label text-[10px] tracking-widest uppercase text-on-surface/60">Concierge</h4>
+<ul class="text-xs space-y-2 text-on-surface/80 font-light">
+<li>Private Viewing</li>
+<li>Bespoke Service</li>
+<li>Shipping &amp; Returns</li>
+<li>Care Guide</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label text-[10px] tracking-widest uppercase text-on-surface/60">House</h4>
+<ul class="text-xs space-y-2 text-on-surface/80 font-light">
+<li>Our Heritage</li>
+<li>The Atelier</li>
+<li>Sustainability</li>
+<li>Careers</li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-label text-[10px] tracking-widest uppercase text-on-surface/60">Newsletter</h4>
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline-variant/30 py-2 text-xs focus:border-primary transition-colors outline-none text-on-surface placeholder:text-on-surface/20" placeholder="YOUR EMAIL" type="email"/>
+<button class="absolute right-0 bottom-2 text-primary font-bold text-[10px] uppercase tracking-widest">Join</button>
+</div>
+</div>
+</div>
+<div class="mt-20 pt-8 border-t border-outline-variant/10 flex justify-between items-center text-[10px] text-on-surface/30 tracking-widest uppercase">
+<span>© 2024 XEVIA HOUSE OF JEWELRY</span>
+<div class="flex gap-8">
+<span>Privacy Policy</span>
+<span>Terms of Service</span>
+</div>
+</div>
+</footer>
+</body></html>

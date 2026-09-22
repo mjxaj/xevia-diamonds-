@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XEVIA | Fine Jewellery Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,400&amp;family=Manrope:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #240c10;
+            color: #ffd9dc;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #e9c349 0%, #b39016 100%);
+        }
+        .glass-panel {
+            background: rgba(36, 12, 16, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#e8bf91",
+                      "primary-container": "#382b00",
+                      "on-secondary-fixed-variant": "#5d411d",
+                      "on-tertiary": "#043639",
+                      "on-surface": "#ffd9dc",
+                      "on-tertiary-container": "#719c9f",
+                      "surface-dim": "#240c10",
+                      "surface-tint": "#e9c349",
+                      "on-tertiary-fixed-variant": "#224d50",
+                      "error": "#ffb4ab",
+                      "outline": "#a38b8c",
+                      "surface-container": "#32181b",
+                      "on-secondary-container": "#d5ae81",
+                      "secondary-fixed": "#ffddb8",
+                      "on-error": "#690005",
+                      "inverse-primary": "#735c00",
+                      "background": "#240c10",
+                      "tertiary-fixed-dim": "#a3ced2",
+                      "tertiary-container": "#003336",
+                      "secondary-fixed-dim": "#e8bf91",
+                      "error-container": "#93000a",
+                      "inverse-on-surface": "#45282c",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#241a00",
+                      "on-primary": "#3c2f00",
+                      "surface-container-highest": "#4a2d30",
+                      "tertiary": "#a3ced2",
+                      "surface-variant": "#4a2d30",
+                      "secondary-container": "#5d411d",
+                      "surface-container-lowest": "#1d070b",
+                      "inverse-surface": "#ffd9dc",
+                      "on-surface-variant": "#dbc0c1",
+                      "outline-variant": "#554243",
+                      "on-primary-container": "#b39016",
+                      "primary": "#e9c349",
+                      "surface": "#240c10",
+                      "on-primary-fixed-variant": "#574500",
+                      "on-secondary-fixed": "#2a1700",
+                      "tertiary-fixed": "#beebee",
+                      "surface-container-high": "#3e2226",
+                      "on-tertiary-fixed": "#002022",
+                      "on-secondary": "#442b09",
+                      "on-background": "#ffd9dc",
+                      "primary-fixed": "#ffe088",
+                      "surface-bright": "#4f3134",
+                      "surface-container-low": "#2d1418",
+                      "primary-fixed-dim": "#e9c349"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Noto Serif"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          }
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-[#240c10]/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<button class="p-2 text-[#e9c349] hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="text-2xl font-serif tracking-[0.3em] text-[#e9c349] uppercase">XEVIA</div>
+<button class="p-2 text-[#e9c349] hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</header>
+<!-- Main Content -->
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="XEVIA Hero" class="w-full h-full object-cover brightness-50 brightness-[0.4]" data-alt="Close-up editorial portrait of a stunning Indian woman with elegant features, wearing opulent traditional-modern fusion gold and diamond jewelry. The lighting is warm and dramatic against a deep maroon background, creating a high-end luxury brand feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUDbAjJM66SBf17VYIGWLuo58N7U_ZfC49wBnk9fwJEYhpKlGbKWYZzYA42w8KzRsOFq9PS4POILLfad126Ql-7QLdfJr3WfeMgsjOx20nlppteR4-gXc-jgLvuiDF0Oq0mj6Fbqu4d-8G45dXmyR1PLEaxPPQ52932WtlrFSfSiCNg3l-T0RIoZNMqTvGv0PcpzPa3JKRoVg9LV60rt91sTxPiIfVPKO2By-LM28S_r3MdXggKb9zGFSpKyOL6VZc9QjqQfUiFHc"/>
+</div>
+<div class="relative z-10 text-center px-6 pt-20">
+<p class="text-primary font-label text-sm tracking-[0.4em] uppercase mb-6">Established 1924</p>
+<h1 class="text-5xl md:text-8xl text-on-surface font-headline mb-8 max-w-4xl leading-tight">
+                    XEVIA Fine <br/><span class="italic">Jewellery</span>
+</h1>
+<div class="flex flex-col md:flex-row gap-6 justify-center items-center mt-12">
+<button class="px-10 py-4 gold-gradient text-on-primary font-bold text-sm tracking-widest uppercase rounded-sm hover:scale-105 transition-transform">
+                        Explore Atelier
+                    </button>
+<button class="px-10 py-4 border border-outline-variant/30 text-on-surface font-bold text-sm tracking-widest uppercase rounded-sm hover:bg-primary/10 transition-all">
+                        View Heritage
+                    </button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+<span class="material-symbols-outlined text-primary/50" data-icon="expand_more">expand_more</span>
+</div>
+</section>
+<!-- Featured Collections: Bento Grid -->
+<section class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div>
+<span class="text-primary text-xs font-bold tracking-[0.3em] uppercase">Signature Pieces</span>
+<h2 class="text-4xl md:text-6xl font-headline mt-4">The Collections</h2>
+</div>
+<p class="text-on-surface-variant max-w-md font-light leading-relaxed">
+                    Every piece in our collection is a testament to the pursuit of perfection, blending traditional craftsmanship with contemporary vision.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[900px]">
+<!-- Rings -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container-lowest">
+<img alt="Rings" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" data-alt="Exquisite gold engagement ring with a large emerald-cut diamond, shot against a dark textured background with moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwKEhGKE6toBakNmRtqrd6jt65AEbjMObE6xIIqKz0_ARjzYjETSq1dzZ6lla8BcZnfxDUQcjXvfBOmi8fnc7xs9_8w-Hc-ZHG1U_MZvLGqCQPzWsyL0I632IHzqkWqO8MSJo0WXVBvDm199-n01vcQyevj64YkXsbbEpygvjpf-PhmPDmta-m0sVEvLh-u7rhP4W1XUjcyhT3ROjSxBReZZmBAZvNmUkzupqigj-Va1JNQIMLc1etsRf1ZytNM9xB9XbHr0KgfRg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-10 left-10">
+<h3 class="text-3xl font-headline italic">Rings</h3>
+<p class="text-primary text-xs tracking-widest uppercase mt-2">Sculpted Eternity</p>
+</div>
+</div>
+<!-- Necklaces -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container-lowest">
+<img alt="Necklaces" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" data-alt="Elegant sapphire necklace draped over a white marble bust, soft cinematic lighting illuminating the blue gemstones and silver metal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpIPBCngZcD-8OHQrqMbuEss5jLhvJPpaoj8KRcP-Vy5XE4NxIygmViJzPQ9l0xPgUfxEYMU5yR2CT53VY21m6nRTHKmWfVBg9gn13CCxW-FOe5oArTxK0jnU753IppPvCUt-3EHiILv75tbrjT32JrW2sNk-HkfeecfeBMm04iklt5WCEOFaJU2pTtEt7QoYuRpbHwAN-AqAXI9blZi6dzskQFczM4XMX1emnaZ0PWVuu4G_7wqPSiwQOlcs6dQgc7T3OTninEDw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-10 left-10">
+<h3 class="text-3xl font-headline italic">Necklaces</h3>
+<p class="text-primary text-xs tracking-widest uppercase mt-2">Celestial Drape</p>
+</div>
+</div>
+<!-- Bracelets -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container-lowest">
+<img alt="Bracelets" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" data-alt="Minimalist gold cuff bracelets stacked on a hand, artistic composition with soft shadows and warm glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATrXRoVhkDY8v8-vNhzL2sqvsM2TpgTJC19-L4CwK2RjZ_FS2yXR6XuoPZAtQMIvNnFxhGxRsArj2t4toOUegM6zImYh9FPUo-FYyODMjU5XNvN-ZouXmD02nC_OeIUK55r71cKhcB2eb7xe5_-OogkpJNp8hEIruKkCACWtDTB3HWc86khuqcdUAvBmKgbwLlK_slaT_eOw7PHxmhoBj5ohX04pGM8EvlldW9exG7w6ZyFgn4Y9_yRYDZOEmad1CLtqCaY9TJ4Xo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-10 left-10">
+<h3 class="text-3xl font-headline italic">Bracelets</h3>
+<p class="text-primary text-xs tracking-widest uppercase mt-2">Gilded Rhythm</p>
+</div>
+</div>
+<!-- Custom -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container-lowest">
+<img alt="Custom" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" data-alt="Macro shot of raw unpolished gemstones and gold grains on a jeweler's workbench, tools in soft focus in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5J8s56B1ogoVgRmsYMdiRAy2h5v4-jus00rDtx6FGFWp0_j3p3IvZdo2UTGqotgkpivx7g2glfpOXcj-p-cgfhWZsK64LndZ9rmlqitUvrVUO0hECtF4wk1f_BVpaLg4Wmw-PrkZd443Vuf2sG9B38An6klWHcf5F8kIJ4TNN1LssGQbLWtII7d_JChp_aDc69CBfCM-crnanECmWdB6NZb7rhamtmD04RI0EHuFR7Me2xO_okDdXTawp0aL61uHeYobmavvdRXk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-10 left-10">
+<h3 class="text-3xl font-headline italic">Custom</h3>
+<p class="text-primary text-xs tracking-widest uppercase mt-2">Personal Legacy</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Xevia Imagine Section -->
+<section class="bg-surface-container-lowest py-40 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="aspect-[4/5] bg-surface-container overflow-hidden rounded-sm relative z-10">
+<img alt="Imagine Process" class="w-full h-full object-cover opacity-90" data-alt="Detailed 3D CAD design of a complex diamond ring on a dark computer screen, highlighting technical precision and artistry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGcXquJVJp7sAxZeOtoWCQk4eOrWD5Qg0IvyBkAOBYqws7og54ocJiDFcztEe9ulYldc5-GP2kqZPLkk3yf8xQoC1_2f_ff-7HnBYDOrZg9mKs9Kb8nk2X-_uI40QtuerLgIxn4uBforkCPKEnn7N5lrQgwb7pYEJeFeAKPYL6H5zIcZ0c1Q6OwhMAcG0KTt7xz_k6bVRKNyInV3bGmWUcBftUCKUb_A9VfX-pcgQJISYz8k_A7cqPhYTk2FA3wxumhxPxNx_9DAs"/>
+</div>
+<div class="absolute -top-10 -right-10 w-64 h-64 border border-primary/20 -z-0"></div>
+<div class="absolute -bottom-10 -left-10 text-primary opacity-10">
+<span class="text-[12rem] font-headline select-none">Imagine</span>
+</div>
+</div>
+<div>
+<span class="text-primary text-xs font-bold tracking-[0.3em] uppercase">Co-Creation</span>
+<h2 class="text-5xl md:text-7xl font-headline mt-6 mb-8 leading-tight">Xevia <span class="italic">Imagine</span></h2>
+<p class="text-on-surface/80 text-lg leading-relaxed mb-10 font-light italic">
+                        "Your vision, our master craft. Design your own legacy through our interactive digital atelier, guided by the world's finest artisans."
+                    </p>
+<ul class="space-y-6 mb-12">
+<li class="flex items-center gap-4 text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-sm tracking-widest uppercase">Select Rare Gemstones</span>
+</li>
+<li class="flex items-center gap-4 text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="edit_note">edit_note</span>
+<span class="text-sm tracking-widest uppercase">Interactive 3D Sculpting</span>
+</li>
+<li class="flex items-center gap-4 text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="history_edu">history_edu</span>
+<span class="text-sm tracking-widest uppercase">Artisan Consultation</span>
+</li>
+</ul>
+<button class="px-12 py-5 gold-gradient text-on-primary font-bold text-sm tracking-widest uppercase rounded-sm hover:translate-x-2 transition-transform">
+                        Begin Designing
+                    </button>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-32 bg-surface">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-10" data-icon="format_quote">format_quote</span>
+<div class="relative">
+<p class="text-2xl md:text-4xl font-headline italic leading-snug text-on-surface mb-12">
+                        "The craftsmanship at XEVIA is unparalleled. They didn't just make a ring; they captured a moment in time that will be passed down for generations."
+                    </p>
+<div class="flex items-center justify-center gap-4">
+<div class="w-12 h-[1px] bg-primary/40"></div>
+<span class="text-primary text-xs font-bold tracking-[0.3em] uppercase">Eleanor V. Rothschild</span>
+<div class="w-12 h-[1px] bg-primary/40"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Craftsmanship Highlight -->
+<section class="py-32 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="p-8 border border-outline-variant/10 rounded-sm bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-3xl mb-6" data-icon="diamond">diamond</span>
+<h4 class="text-xl font-headline mb-4">Ethical Sourcing</h4>
+<p class="text-on-surface-variant font-light text-sm leading-relaxed">Every stone in our vault is conflict-free and traceable to its origin, ensuring beauty with integrity.</p>
+</div>
+<div class="p-8 border border-outline-variant/10 rounded-sm bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-3xl mb-6" data-icon="handyman">handyman</span>
+<h4 class="text-xl font-headline mb-4">Master Craft</h4>
+<p class="text-on-surface-variant font-light text-sm leading-relaxed">Our artisans spend over 200 hours on a single piece, utilizing techniques passed down through ten generations.</p>
+</div>
+<div class="p-8 border border-outline-variant/10 rounded-sm bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-3xl mb-6" data-icon="verified">verified</span>
+<h4 class="text-xl font-headline mb-4">Lifetime Care</h4>
+<p class="text-on-surface-variant font-light text-sm leading-relaxed">We provide a lifetime of professional cleaning, resizing, and restorative care for every piece we create.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Footer Call to Action -->
+<section class="py-32 bg-surface-container-lowest border-t border-outline-variant/5">
+<div class="max-w-3xl mx-auto px-6 text-center">
+<h2 class="text-4xl font-headline mb-6">Join the Private Circle</h2>
+<p class="text-on-surface-variant mb-12">Receive exclusive invitations to private viewings and early access to our High Jewelry collections.</p>
+<form class="flex flex-col md:flex-row gap-4">
+<input class="flex-grow bg-transparent border-b border-outline-variant/30 text-on-surface placeholder:text-on-surface/30 focus:border-primary focus:ring-0 px-4 py-4 text-xs tracking-widest uppercase transition-colors" placeholder="YOUR EMAIL ADDRESS" type="email"/>
+<button class="bg-primary text-on-primary px-10 py-4 font-bold text-xs tracking-widest uppercase hover:bg-primary-fixed transition-colors">Subscribe</button>
+</form>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#240c10]/90 backdrop-blur-2xl shadow-[0_-10px_40px_rgba(36,12,16,0.8)] bg-gradient-to-t from-[#2d1216] to-transparent">
+<a class="flex flex-col items-center justify-center text-[#e9c349] scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Atelier</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#ffd9dc]/40" href="#">
+<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Gallery</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#ffd9dc]/40" href="#">
+<span class="material-symbols-outlined" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Imagine</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#ffd9dc]/40" href="#">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#ffd9dc]/40" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 w-16 h-16 gold-gradient rounded-full shadow-2xl flex items-center justify-center text-on-primary hover:rotate-12 transition-transform z-40 group">
+<span class="material-symbols-outlined text-3xl" data-icon="support_agent">support_agent</span>
+<span class="absolute right-20 bg-surface-container-high text-primary px-4 py-2 rounded-sm text-xs tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">Private Concierge</span>
+</button>
+<!-- Spacer for BottomNavBar on Mobile -->
+<div class="h-24 md:hidden"></div>
+</body></html>
