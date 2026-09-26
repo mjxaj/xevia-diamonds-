@@ -193,6 +193,9 @@
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
   .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}
+  .glass-panel{background:rgba(243,238,230,.9);backdrop-filter:blur(18px)}
+  .safe-bottom{padding-bottom:max(1rem,env(safe-area-inset-bottom))}
+  @media(max-width:767px){body{padding-bottom:92px}}
 </style>
 </head>
 <body class="bg-surface">
@@ -221,9 +224,11 @@
 
 <div class="drawer" id="drawer">
   <span class="star">✦</span>
-  <a href="/collections">Collections</a>
-  <a href="#craft">Craftsmanship</a>
+  <a href="/">Atelier</a>
+  <a href="/collections">Gallery</a>
+  <a href="/imagine">Imagine</a>
   <a href="/about">Our Story</a>
+  <a href="/contact">Contact</a>
   <button type="button" data-enquire data-title="Book a Private Consultation" class="small">Book Consultation</button>
 </div>
 
@@ -329,6 +334,7 @@
 </footer>
 
 {% include 'partials/enquiry-modal.njk' %}
+{% include 'partials/mobile-nav.njk' %}
 
 {% if flash %}
 <div id="flash" style="position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:80;padding:14px 28px;background:{% if flash.type == 'error' %}#fde7e6{% else %}var(--ink){% endif %};color:{% if flash.type == 'error' %}#a31d1d{% else %}#fff{% endif %};font-size:11px;letter-spacing:.28em;text-transform:uppercase;box-shadow:0 6px 24px rgba(0,0,0,.18);">
